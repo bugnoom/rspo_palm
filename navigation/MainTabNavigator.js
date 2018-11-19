@@ -4,8 +4,10 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import DetailMenuScreen from '../screens/DetailMenuScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import NotificationScreen from '../screens/NotificationScreen';
+
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -18,19 +20,19 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `home${focused ? '' : '-outline'}`
+          : 'md-home'
       }
     />
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const DetailMenuStack = createStackNavigator({
+  Links: DetailMenuScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+DetailMenuStack.navigationOptions = {
+  tabBarLabel: 'จัดการข้อมูล',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -44,7 +46,7 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'ข้อมูลส่วนตัว',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -53,8 +55,24 @@ SettingsStack.navigationOptions = {
   ),
 };
 
+const NotificationStack = createStackNavigator({
+  NotificationTab: NotificationScreen,
+});
+
+NotificationStack.navigationOptions = {
+  tabBarLabel: 'แจ้งเตือน',
+  TabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-chatbubbles' : 'md-chatbubbles'}
+    /> 
+  ),
+};
+
+
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  DetailMenuStack,
+  NotificationStack,
   SettingsStack,
 });
