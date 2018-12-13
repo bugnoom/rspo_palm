@@ -1,0 +1,106 @@
+{
+    "menulist": [
+        {
+            "menuid": "1",
+            "menuname": "ประวัติแปลงปลูก",
+            "menuicon": "paper",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "2",
+            "menuname": "ข้อมูลพื้นฐาน",
+            "menuicon": "clipboard",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "3",
+            "menuname": "ข้อมูลด้านพันธ์ปาล์ม",
+            "menuicon": "copy",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "4",
+            "menuname": "ข้อมูลการให้ผลผลิต",
+            "menuicon": "briefcase",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "5",
+            "menuname": "ข้อมูลการใส่ปุ๋ย",
+            "menuicon": "briefcase",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "6",
+            "menuname": "ผลวิเคราะห์ตัวอย่างใบและปุ๋ย",
+            "menuicon": "pie",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "7",
+            "menuname": "วิเคราะห์ตัวอย่างดิน",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "8",
+            "menuname": "การขาดธาตุอาหารและความรุนแรง",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "9",
+            "menuname": "ข้อมูลการใช้สารเคมี",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "10",
+            "menuname": "ข้อมูลปริมาณน้ำฝน",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "11",
+            "menuname": "ประวัติการฝึกอบรม",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "12",
+            "menuname": "ประวัติเข้าเยี่ยมแปลง",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "13",
+            "menuname": "บันทึกจัดการสวนปาล์ม",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "14",
+            "menuname": "แบบประเมินปาล์มน้ำมัน",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "15",
+            "menuname": "บันทึกการจ่ายค่าจ้าง",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "16",
+            "menuname": "บันทึกอุบัติเหตุ",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        },
+        {
+            "menuid": "17",
+            "menuname": "รายงานปัญหา/แจ้งเหตุ",
+            "menuicon": "flask",
+            "menulink": "DetailPlan"
+        }
+    ]
+}

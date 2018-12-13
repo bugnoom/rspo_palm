@@ -18,11 +18,7 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `home${focused ? '' : '-outline'}`
-          : 'md-home'
-      }
+      name={Platform.OS === 'ios' ? 'ios-home': 'md-home'}
     />
   ),
 };
@@ -50,7 +46,7 @@ SettingsStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
     />
   ),
 };
@@ -61,7 +57,7 @@ const NotificationStack = createStackNavigator({
 
 NotificationStack.navigationOptions = {
   tabBarLabel: 'แจ้งเตือน',
-  TabBarIcon: ({ focused }) => (
+  tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
       name={Platform.OS === 'ios' ? 'ios-chatbubbles' : 'md-chatbubbles'}

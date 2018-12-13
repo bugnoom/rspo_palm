@@ -1,107 +1,42 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View, TouchableOpacity, Image, Text, FlatList } from 'react-native';
 import { Colors, Fonts } from '../constants';
+import { Icon } from 'expo';
 
-
-
-const chartIcon = require('../assets/images/pages/chart.png');
-const calendarIcon = require('../assets/images/pages/calendar.png');
-const chatIcon = require('../assets/images/pages/chat.png');
-const galleryIcon = require('../assets/images/pages/gallery.png');
-const profileIcon = require('../assets/images/pages/profile.png');
+const jsonmenulist = require('../assets/menu.json');
 
 export default class DetailMenuScreen extends React.Component {
   static navigationOptions = {
-    title: 'Links1331',
-  };
+    title: 'จัดการข้อมูล',
+  }; 
 
   render() {
     return (
       <ScrollView style={styles.container}>
-       <View style={styles.row}>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Charts' })} style={styles.item}>
-          <Image resizeMode="contain" source={chartIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Charts</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Gallery' })} style={styles.item}>
-          <Image resizeMode="contain" source={galleryIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Gallery</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Profile' })} style={styles.item}>
-          <Image resizeMode="contain" source={profileIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Profile</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Charts' })} style={styles.item}>
-          <Image resizeMode="contain" source={chartIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Charts</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Gallery' })} style={styles.item}>
-          <Image resizeMode="contain" source={galleryIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Gallery</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Profile' })} style={styles.item}>
-          <Image resizeMode="contain" source={profileIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Profile</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Charts' })} style={styles.item}>
-          <Image resizeMode="contain" source={chartIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Charts</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Gallery' })} style={styles.item}>
-          <Image resizeMode="contain" source={galleryIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Gallery</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Profile' })} style={styles.item}>
-          <Image resizeMode="contain" source={profileIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Profile</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Charts' })} style={styles.item}>
-          <Image resizeMode="contain" source={chartIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Charts</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Gallery' })} style={styles.item}>
-          <Image resizeMode="contain" source={galleryIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Gallery</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Profile' })} style={styles.item}>
-          <Image resizeMode="contain" source={profileIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Profile</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Charts' })} style={styles.item}>
-          <Image resizeMode="contain" source={chartIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Charts</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Gallery' })} style={styles.item}>
-          <Image resizeMode="contain" source={galleryIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Gallery</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Profile' })} style={styles.item}>
-          <Image resizeMode="contain" source={profileIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Profile</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.row}>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Charts' })} style={styles.item}>
-          <Image resizeMode="contain" source={chartIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Charts</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Gallery' })} style={styles.item}>
-          <Image resizeMode="contain" source={galleryIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Gallery</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate({ routeName: 'Profile' })} style={styles.item}>
-          <Image resizeMode="contain" source={profileIcon} style={styles.itemImage} />
-          <Text style={styles.itemText}>Profile</Text>
-        </TouchableOpacity>
-      </View>
+      
+      <FlatList 
+        horizontal = {false}
+        numColumns = {3}
+        data={jsonmenulist.menulist}
+        keyExtractor={(item, index) => item.menuid}
+        renderItem={
+          ({item}) => (
+            <TouchableOpacity onPress={() => props.navigate({ routeName: 'Charts' })} style={styles.item}>
+                <Icon.Ionicons
+                  name={Platform === 'ios' ? 'ios-'+item.menuicon : 'md-' + item.menuicon}
+                  size={38}
+                  style={{ marginBottom: -3 , color:Colors.blackcolor}}
+                  color={this.props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+                />
+                  
+                  <Text style={styles.itemText}>{item.menuname}</Text>
+                </TouchableOpacity>
+          )
+        }
+        />
+
+
+      
       </ScrollView>
     );
   }
@@ -132,6 +67,10 @@ const styles = StyleSheet.create({
   itemText: {
     color: Colors.primary,
     fontFamily: Fonts.primary,
+    fontSize: 11,
+    textAlign:'center',
+    textAlignVertical:'top',
+    height:35
   },
   itemImage: {
     height: 35,
