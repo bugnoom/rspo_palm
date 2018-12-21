@@ -7,7 +7,8 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Button
+  Button,
+  AsyncStorage
 } from 'react-native';
 const textTitle = "ABC";
 
@@ -17,11 +18,17 @@ export default class HomeScreen extends React.Component {
     title : textTitle,
   };
 
+  signout = async() =>{
+    AsyncStorage.removeItem('selectsite');
+    this.props.navigation.navigate('SelectSiteScreen')
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-
+          <Button title="SignOut" onPress={this.signout} />
         </ScrollView>
       </View>
     );

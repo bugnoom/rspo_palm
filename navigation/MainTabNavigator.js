@@ -71,4 +71,6 @@ export default createBottomTabNavigator({
   DetailMenuStack,
   NotificationStack,
   SettingsStack,
+},{
+  tabBarVisible:false,
 });
