@@ -10,6 +10,12 @@ export default class DetailMenuScreen extends React.Component {
     title: 'จัดการข้อมูล',
   }; 
 
+  openform = (name,data) =>{
+    const menudata = [];
+    menudata.push(data);
+    this.props.navigation.navigate(name,{ data:JSON.stringify(menudata)})
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -21,7 +27,7 @@ export default class DetailMenuScreen extends React.Component {
         keyExtractor={(item, index) => item.menuid}
         renderItem={
           ({item}) => (
-            <TouchableOpacity onPress={() => props.navigate({ routeName: 'Charts' })} style={styles.item}>
+            <TouchableOpacity onPress={() => this.openform(item.menulink, item.menuname)} style={styles.item}>
                 <Icon.Ionicons
                   name={Platform === 'ios' ? 'ios-'+item.menuicon : 'md-' + item.menuicon}
                   size={38}
@@ -67,7 +73,7 @@ const styles = StyleSheet.create({
   itemText: {
     color: Colors.primary,
     fontFamily: Fonts.primary,
-    fontSize: 11,
+    fontSize: 12,
     textAlign:'center',
     textAlignVertical:'top',
     height:35

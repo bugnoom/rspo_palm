@@ -9,8 +9,17 @@ export default class AuthLoadingScreen extends Component {
     }
 
     loadApp = async() => {
-        const userToken = await AsyncStorage.getItem('userToken')
-        this.props.navigation.navigate(userToken == 'selectsite'? 'SelectSiteScreen' : 'Auth')
+        try{
+            const logedin = await AsyncStorage.getItem('logedin');
+            console.log("logedin is", logedin)
+            if(logedin !== null){
+                this.props.navigation.navigate('SelectSiteScreen');
+            }else{
+                this.props.navigation.navigate('Auth');
+            }
+        } catch(error){
+            Alert.alert("Errors", "Error check user login please login agin");
+        }
     }
 
   render() {

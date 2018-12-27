@@ -1,39 +1,84 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, ScrollView, Button, BackHandler, AsyncStorage } from 'react-native'
+import { Text, StyleSheet, Platform, View, ScrollView, Button, BackHandler, AsyncStorage, FlatList, TouchableOpacity } from 'react-native'
+import { testData } from './../services/DataService';
+import { Colors, Fonts } from '../constants';
+import { Icon } from 'expo'
+import LogoutButton from '../components/LogoutButton';
+
 
 export default class SelectSiteScreen extends Component {
+    constructor(props){
+        super(props);
+
+        this.SelectSite = this.SelectSite.bind(this);
+       
+    }
 
     static navigationOptions = {
         title :'Select Site',
-        headerLeft: null,
-        gesturesEnabled: false
+        gesturesEnabled: false,
+        headerLeft : null,
+        headerRight :  <LogoutButton page="signout" />
       };
 
     componentWillMount(){
         BackHandler.addEventListener('headwareBackPress', function(){
             return true;
         })
+
+        console.log('site', testData.data.site);
     }
 
-    Signin = async() => {
-        await AsyncStorage.setItem('userToken', 'selectsite')
-        this.props.navigation.navigate('App');
+    SelectSite = async(items) => {
+        const data = [];
+        data.push(items);
+
+        await AsyncStorage.setItem('siteID', JSON.stringify(data)).then(
+            () => {
+                this.props.navigation.navigate('App');
+            }
+        )
     }
 
-    logout = async() => {
-        AsyncStorage.clear();
-        this.props.navigation.navigate('AuthLoading')
+    logout() {
+        console.log('click logout')
+        AsyncStorage.clear().then(
+            () => {
+                this.props.navigation.navigate('AuthLoading');
+            }
+        );
+       
     }
 
   render() {
     return (
-      <View style={styles.container}>
-          <ScrollView style={styles.container} ScrollContentStyle={styles.contentcontainer}>
-        <Text> textInComponent </Text>
-        <Button title="MySite1" onPress={this.Signin} />
-        <Button title="Logout" onPress={this.logout} />
+    
+        <ScrollView style={styles.container}>
+            <FlatList 
+           // horizontal = {false}
+           // numColumns = {3}
+            data={testData.data.site}
+            keyExtractor={(item, index) => item.id}
+            renderItem={
+            ({item}) => (
+                <TouchableOpacity onPress={() => this.SelectSite(item)} style={styles.item}>
+                    <Icon.Ionicons name={Platform === 'ios' ? 'ios-map' : 'md-map'} size={28} style={{color:Colors.white, height:48, marginRight:10, textAlignVertical:'center'}} >
+                    <Text style={styles.itemText}> {item.name}</Text>
+                    </Icon.Ionicons>
+                    
+                </TouchableOpacity>
+            )
+            }
+            />
+        
         </ScrollView>
-      </View>
+    //   <View style={styles.container}>
+    //       <ScrollView style={styles.container} ScrollContentStyle={styles.contentcontainer}>
+    //     <Text> textInComponent </Text>
+    //     <Button title="MySite1" onPress={this.Signin} />
+    //     <Button title="Logout" onPress={this.logout} />
+    //     </ScrollView>
+    //   </View>
     )
   }
 }
@@ -41,13 +86,27 @@ export default class SelectSiteScreen extends Component {
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: Colors.white,
+        paddingTop: 10,
     },
-    headtexxt:{
-        fontSize: 77,
-        fontWeight: "700"
-    },
-    contentcontainer:{
-        paddingTop:30
-    }
+    item: {
+        flex: 1,
+        height: 60,
+        borderColor: Colors.primaryLight,
+        borderWidth: 0,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        backgroundColor: Colors.greencolor,
+        margin:10,
+        padding:10,
+      },
+      itemText: {
+        color: Colors.white,
+        fontFamily: Fonts.primary,
+        fontSize: 16,
+        textAlign:'center',
+        textAlignVertical:'center',
+        marginLeft:10
+      },
 })

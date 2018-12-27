@@ -1,34 +1,56 @@
 import React from 'react';
-import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Button,
-  AsyncStorage
-} from 'react-native';
+import {Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, Button, AsyncStorage} from 'react-native';
+import LogoutButton from './../components/LogoutButton';
+
 const textTitle = "ABC";
+const id = '';
 
 export default class HomeScreen extends React.Component {
  
-  static navigationOptions = {
-    title : textTitle,
+  static navigationOptions = ({ navigation }) =>{
+    return {
+      title : navigation.getParam('sitename', 'Dashboard'),
+    }
+   
   };
 
-  signout = async() =>{
-    AsyncStorage.removeItem('selectsite');
-    this.props.navigation.navigate('SelectSiteScreen')
+  constructor(props){
+    super(props);
 
+   this.siteID();
+  }
+
+  siteID(){
+   AsyncStorage.getItem('siteID').then(
+     (res) => {
+       const data = JSON.parse(res);
+       this.props.navigation.setParams({sitename: data[0].name});
+      console.log("site ID is",data[0].name);
+     }
+   );
+  
+  }
+
+  
+
+  backtoselectsite = async() => {
+    AsyncStorage.removeItem('siteID').then(
+      () => {
+        this.props.navigation.navigate('SelectSiteScreen');
+      }
+    )
   }
 
   render() {
+   
+
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Button title="SignOut" onPress={this.signout} />
+          <LogoutButton page="" />
+          <Button title="Select Site" onPress={this.backtoselectsite} />
+          <Text>{ JSON.stringify(this.siteID)}</Text>
+
         </ScrollView>
       </View>
     );
