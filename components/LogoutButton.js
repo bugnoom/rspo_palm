@@ -29,8 +29,8 @@ import { Colors, Fonts } from '../constants';
   render() {
     return (
       <TouchableOpacity onPress={() => this.signout(this.props.page) } style={styles.item} >
-        <Icon.Ionicons name={Platform === 'ios' ? 'ios-key' : 'md-key'} size={15} style={{color:Colors.white, height:48, marginRight:10, textAlignVertical:'center'}} >
-                    <Text style={styles.itemText}> Sign out</Text>
+        <Icon.Ionicons name={Platform === 'ios' ? 'ios-key' : 'md-key'} size={15} style={{color:Colors.white,  marginRight:5, textAlignVertical:'center'}} >
+                    <Text style={styles.itemText}> Logout</Text>
                     </Icon.Ionicons>
       </TouchableOpacity>
     )
@@ -40,15 +40,15 @@ import { Colors, Fonts } from '../constants';
 const styles = StyleSheet.create({
   item: {
     flex: 1,
-    height: 45,
+    height: 35,
     borderColor: Colors.primaryLight,
     borderWidth: 0,
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.greencolor,
     marginRight:5,
-    padding:10,
+    padding:5,
   },
   itemText: {
     color: Colors.white,

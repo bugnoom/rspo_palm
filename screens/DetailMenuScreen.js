@@ -31,8 +31,8 @@ export default class DetailMenuScreen extends React.Component {
                 <Icon.Ionicons
                   name={Platform === 'ios' ? 'ios-'+item.menuicon : 'md-' + item.menuicon}
                   size={38}
-                  style={{ marginBottom: -3 , color:Colors.blackcolor}}
-                  color={this.props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+                  style={{ marginBottom: -3 , color:Colors.greencolor}}
+                  color={this.props.focused ? Colors.greencolor : Colors.tabIconDefault}
                 />
                   
                   <Text style={styles.itemText}>{item.menuname}</Text>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   itemText: {
-    color: Colors.primary,
+    color: Colors.blackcolor,
     fontFamily: Fonts.primary,
     fontSize: 12,
     textAlign:'center',

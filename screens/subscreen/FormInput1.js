@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, ScrollView, Button } from 'react-native'
+import { Text, StyleSheet, View, ScrollView, Button, TextInput, Label } from 'react-native'
 import { Colors, Fonts } from '../../constants';
 
 export default class FormInput1 extends Component {
@@ -23,7 +23,7 @@ export default class FormInput1 extends Component {
     return (
       <View style={styles.container}>
         <ScrollView ScrollContentStyle={styles.constainer}>
-        <Text> Form Input for ประวัติแปลงปลูก  </Text>
+        
         </ScrollView>
       </View>
     )
