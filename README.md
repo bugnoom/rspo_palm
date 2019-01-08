@@ -10,6 +10,8 @@ if you already have installed expo for run this project please run :
 `npm install`
 
 # Tester Project
+on your device please download expo apps in Google play or Apps Store
+
 run Test : `expo start` 
 
 run for android : `expo start --android`
