@@ -8,6 +8,7 @@ import DetailMenuScreen from '../screens/DetailMenuScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
+import SelectSiteScreen from '../screens/SelectSiteScreen';
 import FormInput1 from '../screens/subscreen/FormInput1';
 import FormInput2 from '../screens/subscreen/FormInput2';
 import FormInput3 from '../screens/subscreen/FormInput3';
@@ -37,9 +38,14 @@ HomeStack.navigationOptions = {
 };
 
 const DetailMenuStack = createStackNavigator({
+  SelectSiteScreen:{
+    screen: SelectSiteScreen
+  },
+  
   DetailScreen:{
     screen: DetailMenuScreen
   },
+  
   FormInput1: {
     screen: FormInput1,
    },
@@ -76,7 +82,7 @@ const DetailMenuStack = createStackNavigator({
 });
 
 DetailMenuStack.navigationOptions = {
-  screen: DetailMenuScreen,
+  screen: SelectSiteScreen,
   tabBarLabel: 'จัดการข้อมูล',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon

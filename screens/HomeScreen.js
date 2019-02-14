@@ -24,8 +24,8 @@ export default class HomeScreen extends React.Component {
    AsyncStorage.getItem('siteID').then(
      (res) => {
        const data = JSON.parse(res);
-       this.props.navigation.setParams({sitename: data[0].name});
-      console.log("site ID is",data[0].name);
+     //  this.props.navigation.setParams({sitename: data[0].name});
+     // console.log("site ID is",data[0].name);
      }
    );
   
@@ -36,7 +36,7 @@ export default class HomeScreen extends React.Component {
   backtoselectsite = async() => {
     AsyncStorage.removeItem('siteID').then(
       () => {
-        this.props.navigation.navigate('SelectSiteScreen');
+        this.props.navigation.navigate('LoginScreen');
       }
     )
   }
@@ -47,7 +47,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <LogoutButton page="" />
+          <LogoutButton page="signout" />
           <Button title="Select Site" onPress={this.backtoselectsite} />
           <Text>{ JSON.stringify(this.siteID)}</Text>
 

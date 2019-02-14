@@ -19,7 +19,7 @@ import { Colors, Fonts } from '../constants';
       }else{
         AsyncStorage.removeItem('siteID').then(
           () => {
-            this.props.navigation.navigate('SelectSiteScreen');
+            this.props.navigation.navigate('LoginScreen');
           }
         )
       }

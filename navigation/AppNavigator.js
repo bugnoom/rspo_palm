@@ -5,14 +5,13 @@ import { Text, TouchableOpacity, Button } from 'react-native';
 import MainTabNavigator from './MainTabNavigator';
 import LoginScreen from './../screens/LoginScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
-import SelectSiteScreen from './../screens/SelectSiteScreen';
-import FormInput1 from './../screens/subscreen/FormInput1';
+
 import ForgotPasswordScreen from './../screens/ForgotPasswordScreen';
+
 
 const AuthStackNavigator = createStackNavigator({
  LoginScreen: LoginScreen,
  ForgotPassScreen: ForgotPasswordScreen,
- SelectSiteScreen: SelectSiteScreen,
 })
 
 

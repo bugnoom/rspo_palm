@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, ScrollView, Button, TextInput, Alert, TouchableOpacity, AsyncStorage} from 'react-native'
+import { Text, StyleSheet, View, ScrollView, Button, Keyboard, TextInput, Alert, TouchableOpacity, AsyncStorage} from 'react-native'
 import { testData } from './../services/DataService';
 import { Colors } from '../constants'
 
@@ -19,7 +19,7 @@ export default class LoginScreen extends Component {
         try{
             const logedin = await AsyncStorage.getItem('logedin');
             if(logedin !== null){
-                this.props.navigation.navigate('SelectSiteScreen');
+                this.props.navigation.navigate('App');
             }
         } catch(error){
             Alert.alert("Errors", "Error check user login please login agin");
@@ -37,7 +37,7 @@ export default class LoginScreen extends Component {
         // const data = () => {return testData};
                 if(testData.data.login.username == username && testData.data.login.password == password){
                    this.Logedin();
-                    this.props.navigation.navigate('SelectSiteScreen')
+                    this.props.navigation.navigate('App')
                 }else{
                     Alert.alert("Login",'Invalid Login please check username and password ');
                 }
@@ -48,10 +48,13 @@ export default class LoginScreen extends Component {
        
     }
 
+    dismisskeyboard(){
+        Keyboard.dismiss();
+    }
+
   render() {
     return (
-      <View style={styles.container}>
-       
+      <ScrollView contentContainerStyle={styles.container}>
             <Text style={styles.headtext}> Login </Text>
             <View style={{margin:15}} />
             <TextInput placeholder='Username' style={styles.inputText} onChangeText={(username) => this.setState({username})} />
@@ -62,8 +65,8 @@ export default class LoginScreen extends Component {
             </TouchableOpacity>
           
             <TouchableOpacity onPress={this.forgotpass.bind(this)}  style={styles.forgotpassword} ><Text style={{color:Colors.primary, margin: 10}} >Forgotpassword</Text></TouchableOpacity>
-
-      </View>
+      </ScrollView>
+     
     )
   }
 }

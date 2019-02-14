@@ -13,7 +13,7 @@ export default class AuthLoadingScreen extends Component {
             const logedin = await AsyncStorage.getItem('logedin');
             console.log("logedin is", logedin)
             if(logedin !== null){
-                this.props.navigation.navigate('SelectSiteScreen');
+                this.props.navigation.navigate('App');
             }else{
                 this.props.navigation.navigate('Auth');
             }

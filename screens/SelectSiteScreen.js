@@ -14,40 +14,23 @@ export default class SelectSiteScreen extends Component {
        
     }
 
-    static navigationOptions = {
-        title :'Select Site',
-        gesturesEnabled: false,
-        headerLeft : null,
-        headerRight :  <LogoutButton page="signout" />
-      };
+    // static navigationOptions = {
+    //     title :'Select Site',
+    //     gesturesEnabled: false,
+    //     headerLeft : null,
+    //     headerRight :  <LogoutButton page="signout" />
+    //   };
 
-    componentWillMount(){
-        BackHandler.addEventListener('headwareBackPress', function(){
-            return true;
-        })
-
-        console.log('site', testData.data.site);
-    }
-
+   
     SelectSite = async(items) => {
         const data = [];
         data.push(items);
-
+    
         await AsyncStorage.setItem('siteID', JSON.stringify(data)).then(
             () => {
-                this.props.navigation.navigate('App');
+                this.props.navigation.navigate('DetailScreen')
             }
         )
-    }
-
-    logout() {
-        console.log('click logout')
-        AsyncStorage.clear().then(
-            () => {
-                this.props.navigation.navigate('AuthLoading');
-            }
-        );
-       
     }
 
   render() {
