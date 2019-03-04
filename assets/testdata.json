@@ -1,22 +1,151 @@
 {
-    "data":{
-        "login":{
+    "data": {
+        "login": {
             "username": "admin",
             "password": "1234567890"
         },
-        "site":[
-            {
-                "id":"1",
-                "name": "สวนปาร์ม หลังบ้าน",
-                "address": "คลองท่อม กระบี่",
-                "area": 30
+        "site": [{
+                "id": "1",
+                "rspo_id": "001",
+                "name": "สวนปาล์ม หลังบ้าน",
+                "address": "กระบี่",
+                "area": 30,
+                "num": 340,
+                "form1": {
+                    "code": "1",
+                    "rspocode": "001",
+                    "name": "สวนปาล์ม หลังบ้าน",
+                    "datein": "02/10/2561",
+                    "type": "1",
+                    "address": "กระบี่",
+                    "yearin": "2535",
+                    "area": "30",
+                    "num": "340",
+                    "dead": "0",
+                    "growback": "0",
+                    "yeargrow": "2540",
+                    "solutiongrow": "1",
+                    "reasondead": "",
+                    "detailarea": [{
+                        "description": "",
+                        "images": ["URL1", "URL2"]
+                    }],
+                    "benefitother":[{
+                        "description": "",
+                        "images":["URL1", "URL2"]
+                    }],
+                    "conserve":""
+                },
+                "form2": {
+                    "statesoil" : "",
+                    "typearea"  : "5",
+                    "typearearemark" : "",
+                    "typesoil"  : "6",
+                    "typesoilother" : "",
+                    "plantingarea" : "5",
+                    "plantingareaother" : "",
+                    "soilconservation" : "5",
+                    "soilconservationother" : "",
+                    "wateringmethod" : "1",
+                    "sourcewater" : "",
+                    "usebefore" : "",
+                    "pattern" : "1",
+                    "phase" : "",
+                    "harvesting" : "2",
+                    "harvestingother" : "นาย ก."
+                },
+                "form3": {
+                    "originsoil" : "3",
+                    "originsoilother" : "",
+
+
+                },
+                "form4": {
+
+                },
+                "form5": {
+
+                },
+                "form6": {
+
+                },
+                "form7": {
+
+                },
+                "form8": {
+
+                },
+                "form9": {
+
+                },
+                "form10": {
+
+                },
+                "form11": {
+
+                },
+                "form12": {
+
+                },
+                "form13": {
+
+                },
+                "form14": {
+
+                },
+                "form15": {
+
+                },
+                "form16": {
+
+                },
+                "form17": {
+
+                }
+
             },
             {
-                "id":"2",
-                "name":"สวนปาร์ม คลองท่อม",
-                "address":"คลองท่อม กระบี่",
-                "area": 50
+                "id": "2",
+                "rspo_id": "002",
+                "name": "สวนปาร์ม คลองท่อม",
+                "address": "คลองท่อม กระบี่",
+                "area": 50,
+                "amount": 1500,
+                "form1": {
+
+                },
+                "form2": {
+
+                },
+                "form3": {
+
+                },
+                "form4": {
+
+                },
+                "form5": {
+
+                },
+                "form6": {
+
+                },
+                "form7": {
+
+                },
+                "form8": {
+
+                },
+                "form9": {
+
+                },
+                "form10": {
+
+                },
+                "form11": {
+
+                }
+
             }
         ]
-            }
+    }
 }

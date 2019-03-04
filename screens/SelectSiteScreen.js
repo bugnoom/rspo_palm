@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import { Text, StyleSheet, Platform, View, ScrollView, Button, BackHandler, AsyncStorage, FlatList, TouchableOpacity } from 'react-native'
+import React, { Component } from 'react';
+import { Text, StyleSheet, Platform, Image, View, Button, ScrollView, BackHandler, AsyncStorage, FlatList, TouchableOpacity } from 'react-native'
+
+import { Card } from 'react-native-elements';
+
 import { testData } from './../services/DataService';
 import { Colors, Fonts } from '../constants';
-import { Icon } from 'expo'
-import LogoutButton from '../components/LogoutButton';
 
 
 export default class SelectSiteScreen extends Component {
@@ -44,27 +45,61 @@ export default class SelectSiteScreen extends Component {
             keyExtractor={(item, index) => item.id}
             renderItem={
             ({item}) => (
-                <TouchableOpacity onPress={() => this.SelectSite(item)} style={styles.item}>
-                    <Icon.Ionicons name={Platform === 'ios' ? 'ios-map' : 'md-map'} size={28} style={{color:Colors.white, height:48, marginRight:10, textAlignVertical:'center'}} >
-                    <Text style={styles.itemText}> {item.name}</Text>
-                    </Icon.Ionicons>
-                    
-                </TouchableOpacity>
+            //    <Card
+            //     title={item.name}
+            //     image={require('../assets/images/robot-dev.png')}>
+            //     <Text style={{marginBottom: 10}}>
+            //     {item.name}
+            //     </Text>
+            //     <Button onPress={() => this.SelectSite(item)} style={styles.item}
+            //         icon={{name: 'code'}}
+            //         backgroundColor='#03A9F4'
+            //         buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+            //         title='VIEW NOW' />
+            //     </Card>
+            <TouchableOpacity  onPress={() => this.SelectSite(item)} style={styles.borderButton}>
+            <View style={styles.titleContainer}>
+            <View style={styles.titleIconContainer}>
+              <AppIconPreview  />
+            </View>
+      
+            <View style={styles.titleTextContainer}>
+              <Text style={styles.nameText} numberOfLines={1}>
+              {item.name}
+              </Text>
+      
+              <Text style={styles.slugText} numberOfLines={1}>
+              {item.address}
+              </Text>
+      
+              <Text style={styles.descriptionText}>
+              เนื้อที่  : {item.area} ตารางเมตร
+              </Text>
+            </View>
+          </View>
+          </TouchableOpacity>
             )
             }
             />
         
         </ScrollView>
-    //   <View style={styles.container}>
-    //       <ScrollView style={styles.container} ScrollContentStyle={styles.contentcontainer}>
-    //     <Text> textInComponent </Text>
-    //     <Button title="MySite1" onPress={this.Signin} />
-    //     <Button title="Logout" onPress={this.logout} />
-    //     </ScrollView>
-    //   </View>
     )
   }
 }
+
+const AppIconPreview = ({ iconUrl }) => {
+    if (!iconUrl) {
+      iconUrl =
+        'https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png';
+    }
+    return (
+        <Image
+          source={{ uri: iconUrl }}
+          style={{ width: 64, height: 64 }}
+          resizeMode="cover"
+        />
+      );
+    };
 
 const styles = StyleSheet.create({
     container:{
@@ -72,6 +107,35 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white,
         paddingTop: 10,
     },
+    titleContainer: {
+        paddingHorizontal: 15,
+        paddingTop: 15,
+        paddingBottom: 15,
+        flexDirection: 'row',
+      },
+      titleIconContainer: {
+        marginRight: 15,
+        paddingTop: 2,
+      },
+      nameText: {
+        fontWeight: '600',
+        fontSize: 18,
+      },
+      slugText: {
+        color: '#a39f9f',
+        fontSize: 14,
+        backgroundColor: 'transparent',
+      },
+      descriptionText: {
+        fontSize: 14,
+        marginTop: 6,
+        color: '#4d4d4d',
+      },
+      borderButton:{
+        borderBottomWidth:1,
+        borderBottomColor: Colors.noticeText,
+      },
+
     item: {
         flex: 1,
         height: 60,
