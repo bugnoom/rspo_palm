@@ -1,10 +1,12 @@
+
 {
     "data": {
         "login": {
             "username": "admin",
             "password": "1234567890"
         },
-        "site": [{
+        "site": [
+            {
                 "id": "1",
                 "rspo_id": "001",
                 "name": "สวนปาล์ม หลังบ้าน",
@@ -34,7 +36,9 @@
                         "description": "",
                         "images":["URL1", "URL2"]
                     }],
-                    "conserve":""
+                    "conserve":"",
+                    "mapdrawer" : ["point1", "point2", "point3", "point4"]
+                    
                 },
                 "form2": {
                     "statesoil" : "",
@@ -57,47 +61,1772 @@
                 "form3": {
                     "originsoil" : "3",
                     "originsoilother" : "",
-
-
+                    "kindsoil":"1",
+                    "kindsoilcompany": "ไอฟิล",
+                    "choosesoil" : "1",
+                    "oldsoil" : "0",
+                    "pic_other" : ["URL1", "URL2"],
+                    "Pic" : ["URL1", "URL2"]
                 },
                 "form4": {
+                    "listdata":[
+                        {
+                            "datein":"14/01/2562",
+                            "billnumber" : "",
+                            "numerative" : "0.00",
+                            "numerativeprice" : "0.00",
+                            "seedfail" : "0.00",
+                            "seedfailprice" : "0.00",
+                            "totalprice" : "0.00",
+                            "earnings" : "0.00",
+                            "earningsseedfail" : "0.00",
+                            "images" : ["URL1", "URL2"]
+                        },
+                        {
+                            "datein":"15/01/2562",
+                            "billnumber" : "",
+                            "numerative" : "0.00",
+                            "numerativeprice" : "0.00",
+                            "seedfail" : "0.00",
+                            "seedfailprice" : "0.00",
+                            "totalprice" : "0.00",
+                            "earnings" : "0.00",
+                            "earningsseedfail" : "0.00",
+                            "images" : ["URL1", "URL2"]
+                        },
+                        {
+                            "datein":"16/01/2562",
+                            "billnumber" : "",
+                            "numerative" : "0.00",
+                            "numerativeprice" : "0.00",
+                            "seedfail" : "0.00",
+                            "seedfailprice" : "0.00",
+                            "totalprice" : "0.00",
+                            "earnings" : "0.00",
+                            "earningsseedfail" : "0.00",
+                            "images" : ["URL1", "URL2"]
+                        }
+
+                    ]
 
                 },
                 "form5": {
-
+                    "listdata":[
+                        {
+                            "datein":"14/01/2562",
+                            "type" : "",
+                            "brand" : "",
+                            "rate" : "0.00",
+                            "price" : "0.00",
+                            "amount" : "0.00",
+                            "earnings" : "0.00",
+                            "remark" : "0.00",
+                            "images" : ["URL1", "URL2"]
+                        },
+                        {
+                            "datein":"15/02/2562",
+                            "type" : "",
+                            "brand" : "",
+                            "rate" : "0.00",
+                            "price" : "0.00",
+                            "amount" : "0.00",
+                            "earnings" : "0.00",
+                            "remark" : "0.00",
+                            "images" : ["URL1", "URL2"]
+                        }
+                    ]   
                 },
                 "form6": {
+                    "listdata":[
+                        {
+                            "datein":"14/01/2562",
+                            "dept" : "",
+                            "condition":{
+                                "nitrogen" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "phosphorus" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "potassium" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "magnesium" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "calcium" :[
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "brimstone" :[
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "byron" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ]
+                            },
 
+                            "instructions" : {
+                                "nitrogen1" : [
+                                    {
+                                        "base": "21-0-0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "nitrogen2" : [
+                                    {
+                                        "base": "46-0-0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "phosphorus1" : [
+                                    {
+                                        "base": "DAP",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "phosphorus2" : [
+                                    {
+                                        "base": "Rock PO",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "potassium" : [
+                                    {
+                                        "base": "0-0-60",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "magnesium" : [
+                                    {
+                                        "base": "คีเซอไรต์",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "dolomite" : [
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "calcium" :[
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "brimstone" :[
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "byron" : [
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "datein":"14/02/2562",
+                            "dept" : "",
+                            "condition":{
+                                "nitrogen" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "phosphorus" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "potassium" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "magnesium" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "calcium" :[
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "brimstone" :[
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "byron" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ]
+                            },
+
+                            "instructions" : {
+                                "nitrogen1" : [
+                                    {
+                                        "base": "21-0-0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "nitrogen2" : [
+                                    {
+                                        "base": "46-0-0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "phosphorus1" : [
+                                    {
+                                        "base": "DAP",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "phosphorus2" : [
+                                    {
+                                        "base": "Rock PO",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "potassium" : [
+                                    {
+                                        "base": "0-0-60",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "magnesium" : [
+                                    {
+                                        "base": "คีเซอไรต์",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "dolomite" : [
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "calcium" :[
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "brimstone" :[
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "byron" : [
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ]
+                            }
+                        }
+                    ]
                 },
                 "form7": {
+                    "listdata":[{
+                        "datein" : "14/02/2562",
+                        "dept" : "1",
+                        "images" : ["URL1", "URL2"],
+                        "val" :[
+                            {
+                            "deep": "0-30",
+                            "percent" : {
+                                "nitrogen" : 0,
+                                "organic" : 0
+                            },
+                            "weight1" :{
+                                "phosphorus" : 0,
+                                "potassium" : 0
+                            },
+                            "meq1" : {
+                                "calcium": 0,
+                                "magnesium" : 0,
+                                "birmstone" : 0
+                            },
+                            "weight2" : {
+                                "acidity" : 0
+                            },
+                            "meq2" : {
+                                "alkaline" : 0,
+                                "Ph" : 0
+                            },
+                            "h2o" : {
+                                "ec" : 0
+                            }
+                        },{
+                            "deep": "30-50",
+                            "percent" : {
+                                "nitrogen" : 0,
+                                "organic" : 0
+                            },
+                            "weight1" :{
+                                "phosphorus" : 0,
+                                "potassium" : 0
+                            },
+                            "meq1" : {
+                                "calcium": 0,
+                                "magnesium" : 0,
+                                "birmstone" : 0
+                            },
+                            "weight2" : {
+                                "acidity" : 0
+                            },
+                            "meq2" : {
+                                "alkaline" : 0,
+                                "Ph" : 0
+                            },
+                            "h2o" : {
+                                "ec" : 0
+                            }
+                        }
+                    ]
+                    },
+                    {
+                        "datein" : "14/03/2562",
+                        "dept" : "1",
+                        "images" : ["URL1", "URL2"],
+                        "val" :[
+                            {
+                            "deep": "0-30",
+                            "percent" : {
+                                "nitrogen" : 0,
+                                "organic" : 0
+                            },
+                            "weight1" :{
+                                "phosphorus" : 0,
+                                "potassium" : 0
+                            },
+                            "meq1" : {
+                                "calcium": 0,
+                                "magnesium" : 0,
+                                "birmstone" : 0
+                            },
+                            "weight2" : {
+                                "acidity" : 0
+                            },
+                            "meq2" : {
+                                "alkaline" : 0,
+                                "Ph" : 0
+                            },
+                            "h2o" : {
+                                "ec" : 0
+                            }
+                        },{
+                            "deep": "30-50",
+                            "percent" : {
+                                "nitrogen" : 0,
+                                "organic" : 0
+                            },
+                            "weight1" :{
+                                "phosphorus" : 0,
+                                "potassium" : 0
+                            },
+                            "meq1" : {
+                                "calcium": 0,
+                                "magnesium" : 0,
+                                "birmstone" : 0
+                            },
+                            "weight2" : {
+                                "acidity" : 0
+                            },
+                            "meq2" : {
+                                "alkaline" : 0,
+                                "Ph" : 0
+                            },
+                            "h2o" : {
+                                "ec" : 0
+                            }
+                        }
+                    ]
+                    }]
 
                 },
                 "form8": {
-
+                    "listdata" :[{
+                        "datein":"14/02/2562",
+                        "detaildeficiency" : "",
+                        "leveldeficiencye" : "1",
+                        "remark" : "",
+                        "images" : ["URL1", "URL2"]
+                    },
+                    {
+                        "datein":"14/03/2562",
+                        "detaildeficiency" : "",
+                        "leveldeficiencye" : "2",
+                        "remark" : "",
+                        "images" : ["URL1", "URL2"]
+                    }]
                 },
                 "form9": {
-
+                    "listdata":[{
+                        "datein" : "14/02/2562",
+                        "typepesticide" : "1",
+                        "chemical" : "",
+                        "brandchemical" : "",
+                        "ratechemical" : "",
+                        "reasonuse" : "",
+                        "protect" : "",
+                        "images" : ["URL1", "URL2"]
+                    },
+                    {
+                        "datein" : "14/03/2562",
+                        "typepesticide" : "2",
+                        "chemical" : "",
+                        "brandchemical" : "",
+                        "ratechemical" : "",
+                        "reasonuse" : "",
+                        "protect" : "",
+                        "images" : ["URL1", "URL2"]
+                    }]
                 },
                 "form10": {
-
+                    "listdata":[{
+                        "datein":"14/02/2562",
+                        "rain" : 0.00,
+                        "humidity" : 0.00
+                    },
+                    {
+                        "datein":"15/02/2562",
+                        "rain" : 0.00,
+                        "humidity" : 0.00
+                    },
+                    {
+                        "datein":"15/02/2562",
+                        "rain" : 0.00,
+                        "humidity" : 0.00
+                    }]
                 },
                 "form11": {
-
+                    "listdata" :[{
+                        "datein" :"14/02/2562",
+                        "topic" : "",
+                        "location" : "",
+                        "expert" : "",
+                        "images" : ["URL1", "URL2"]
+                    },
+                    {
+                        "datein" :"13/03/2562",
+                        "topic" : "",
+                        "location" : "",
+                        "expert" : "",
+                        "images" : ["URL1", "URL2"]
+                    }]
                 },
                 "form12": {
-
+                    "listdata" :[{
+                        "datein":"14/02/2562",
+                        "detail": "",
+                        "dept" : "",
+                        "images" : ["URL1", "URL2"]
+                    },
+                    {
+                        "datein":"17/03/2562",
+                        "detail": "",
+                        "dept" : "",
+                        "images" : ["URL1", "URL2"]
+                    }]
                 },
                 "form13": {
-
+                    "income" : {
+                        "allincome" : 2000
+                    },
+                    "expenses" : {
+                        "material" : {
+                            "fertilize" : 500
+                        },
+                        "laborcost" : {
+                            "fertilizercost" : 50,
+                            "weedkill" : 0,
+                            "leafcut" : 0,
+                            "harvest" : 500
+                        },
+                        "productioncost" : {
+                            "treekiller" : 0,
+                            "analysis" : 0,
+                            "oil" : 0,
+                            "inseckill" : 0,
+                            "materialcost" : 0,
+                            "delivery" : 0
+                        }
+                    }
                 },
                 "form14": {
+                    "listdata" :[{
+                        "datein" :"14/02/2562",
+                        "person" : "",
+                        "score" : "",
+                        "remark" : "",
+                        "section" : [{
+                            "name" : "ส่วนที่ 1",
+                            "variable" :{
+                                "n1": {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n2" :{
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n3":{
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n4" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n5" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "mode" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                }
+                            }
+                        },{
+                            "name" : "ส่วนที่ 2",
+                            "variable" :{
+                                "n1": {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n2" :{
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n3":{
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n4" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n5" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "mode" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                }
+                            }
+                        }]
+                    },{
+                        "datein" :"16/03/2562",
+                        "person" : "",
+                        "score" : "",
+                        "remark" : "",
+                        "section" : [{
+                            "name" : "ส่วนที่ 1",
+                            "variable" :{
+                                "n1": {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n2" :{
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n3":{
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n4" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n5" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "mode" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                }
+                            }
+                        },{
+                            "name" : "ส่วนที่ 2",
+                            "variable" :{
+                                "n1": {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n2" :{
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n3":{
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n4" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "n5" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                },
+                                "mode" : {
+                                    "variablesection" :{
+                                        "harvesting" : {
+                                            "palmcutting" : 1,
+                                            "falling" : 5,
+                                            "collection" : 10
+                                        },
+                                        "treatment" :{
+                                            "leafcutting" : 5,
+                                            "gardenfloor" : 5,
+                                            "soil" : 5,
+                                            "leafplacement" : 5,
+                                            "circumferenct" : 5
+                                        },
+                                        "gardentarea" : {
+                                            "harvestroute" : 7,
+                                            "waterloop" : 8,
+                                            "washout" : 6,
+                                            "route" : 8,
+                                            "stairs" : 5,
+                                            "bumperline" : 5,
+                                            "groundcover" : 5
+                                        },
+                                        "weed" : {
+                                            "fertilizer" : 9,
+                                            "fertilizermethod" : 9,
+                                            "fertilizertype" : 9,
+                                            "organicuse" : 9
+                                        },
+                                        "samplecollection" : 9,
+                                        "substitution" : 8,
+                                        "environment" : 9
+                                    }
+                                }
+                            }
+                        }]
+                    }]
 
                 },
                 "form15": {
-
+                    "listdata" : [{
+                        "datein" :"14/02/2562",
+                        "images" : ["URL1", "URL2"],
+                        "costtype" : "1",
+                        "costvalue" : 0.00
+                    },{
+                        "datein" :"20/02/2562",
+                        "images" : ["URL1", "URL2"],
+                        "costtype" : "2",
+                        "costvalue" : 0.00
+                    },{
+                        "datein" :"12/03/2562",
+                        "images" : ["URL1", "URL2"],
+                        "costtype" : "3",
+                        "costvalue" : 0.00
+                    }]
                 },
                 "form16": {
-
+                    "listdata":[{
+                        "datein":"14/02/2562",
+                        "timein": "15:00",
+                        "station" : "",
+                        "purposeaccident" : "1",
+                        "name" : "",
+                        "stafftype" : "1",
+                        "age" : "50",
+                        "education": "ป.4",
+                        "jobyear" : "5",
+                        "jobmonth" : "10",
+                        "dept" : "",
+                        "jobdesc" : "",
+                        "eventperson" : "",
+                        "result" : {
+                            "violence" :{
+                                "noinjured" : {
+                                    "name" : "ไม่มีผู้บาดเจ็บ",
+                                    "val" : 1
+                                },
+                                "littleinjured":{
+                                    "name" : "บาดเจ็บเล็กน้อยขั้นปฐมพยาบาล",
+                                    "val" : 1
+                                },
+                                "stopworkinjured":{
+                                    "name" : "บาดเจ็บขั้นหยุดงาน",
+                                    "val" : 1
+                                },
+                                "nostopworkinjured": {
+                                    "name" :"ไม่หยุดงาน",
+                                    "val" : 0
+                                },
+                                "disablility" : {
+                                    "name" : "ทุพพลภาพ",
+                                    "value" : 0
+                                },
+                                "dead" : {
+                                    "name" : "เสียชีวิต",
+                                    "value" : 0
+                                }
+                            },
+                            "losing" : {
+                                "medicalfree" : {
+                                    "name" : "ค่ารักษาพยาบาล",
+                                    "val" : ""
+                                },
+                                "propertylost" : {
+                                    "name" : "สูญเสียทรัพย์สินประมาณ",
+                                    "val" : ""
+                                },
+                                "funeralfree" : {
+                                    "name" : "ค่าทำขวัญ/ทำศพ",
+                                    "val" : ""
+                                }
+                            }                         
+                        },
+                        "accidenttype":{
+                            "type1":{
+                                "name" : "ลื่น,หกล้ม",
+                                "val" : 0
+                            },"type2":{
+                                "name" : "ออกแรงเกินกำลัง",
+                                "val" : 0
+                            },"type3":{
+                                "name" : "พลัดตกจากที่สูง",
+                                "val" : 0
+                            },"type4":{
+                                "name" : "อัคคีภัย",
+                                "val" : 0
+                            },"type5":{
+                                "name" : "วัตถุกระเด็น/หล่นใส่",
+                                "val" : 0
+                            },"type6":{
+                                "name" : "สัมผัสความร้อน",
+                                "val" : 0
+                            },"type7":{
+                                "name" : "ชน/กระแทก",
+                                "val" : 0
+                            },"type8":{
+                                "name" : "ถูกตัด/บาด",
+                                "val" : 0
+                            },"type9":{
+                                "name" : "ระเบิด/ฝุ่นระเบิด",
+                                "val" : 0
+                            },"type10":{
+                                "name" : "ถูกเจาะ,ทิ่ม",
+                                "val" : 0
+                            },"type11":{
+                                "name" : "ถูกหนีบ,ถูกดึง",
+                                "val" : 0
+                            },"type12":{
+                                "name" : "สัมผัสกระแสไฟฟ้า",
+                                "val" : 0
+                            },"type13":{
+                                "name" : "สัมผัสสารเคมี",
+                                "val" : 0
+                            },"type14":{
+                                "name" : "ยานยนต์",
+                                "val" : 0
+                            },"type15":{
+                                "name" : "สารเคมีรั่วไหล",
+                                "val" : 0
+                            }
+                        },
+                        "injured" : {
+                            "injured1":{
+                                "name" : "ศรีษะ",
+                                "val" : 0
+                            },"injured2":{
+                                "name" : "นัยต์ตา",
+                                "val" : 0
+                            },"injured3":{
+                                "name" : "นัยต์ตา",
+                                "val" : 0
+                            },"injured4":{
+                                "name" : "ลำคอ",
+                                "val" : 0
+                            },"injured5":{
+                                "name" : "หู",
+                                "val" : 0
+                            },"injured6":{
+                                "name" : "เท้า",
+                                "val" : 0
+                            },"injured7":{
+                                "name" : "หัวเข่า",
+                                "val" : 0
+                            },"injured8":{
+                                "name" : "ลำตัว",
+                                "val" : 0
+                            },"injured9":{
+                                "name" : "นิ้วมือ",
+                                "val" : 0
+                            },"injured10":{
+                                "name" : "มือ",
+                                "val" : 0
+                            },"injured11":{
+                                "name" : "หลัง",
+                                "val" : 0
+                            },"injured12":{
+                                "name" : "ไหล่",
+                                "val" : 0
+                            },"injured13":{
+                                "name" : "หน้าอก",
+                                "val" : 0
+                            },"injured14":{
+                                "name" : "สะโพก",
+                                "val" : 0
+                            },"injured15":{
+                                "name" : "ก้น",
+                                "val" : 0
+                            },"injured16":{
+                                "name" : "ขา",
+                                "val" : 0
+                            },"injured17":{
+                                "name" : "นิ้วเท้า",
+                                "val" : 0
+                            },"injured18":{
+                                "name" : "แขน",
+                                "val" : 0
+                            }
+                        },
+                        "remarkinjured": "",
+                        "remark" : "",
+                        "suggestion" : "",
+                        "personreport" : "",
+                        "personsecurity": "",
+                        "images" : ["URL1","URL2"]
+                    },
+                    {
+                        "datein":"14/03/2562",
+                        "timein": "15:00",
+                        "station" : "",
+                        "purposeaccident" : "1",
+                        "name" : "",
+                        "stafftype" : "1",
+                        "age" : "50",
+                        "education": "ป.4",
+                        "jobyear" : "5",
+                        "jobmonth" : "10",
+                        "dept" : "",
+                        "jobdesc" : "",
+                        "eventperson" : "",
+                        "result" : {
+                            "violence" :{
+                                "noinjured" : {
+                                    "name" : "ไม่มีผู้บาดเจ็บ",
+                                    "val" : 1
+                                },
+                                "littleinjured":{
+                                    "name" : "บาดเจ็บเล็กน้อยขั้นปฐมพยาบาล",
+                                    "val" : 1
+                                },
+                                "stopworkinjured":{
+                                    "name" : "บาดเจ็บขั้นหยุดงาน",
+                                    "val" : 1
+                                },
+                                "nostopworkinjured": {
+                                    "name" :"ไม่หยุดงาน",
+                                    "val" : 0
+                                },
+                                "disablility" : {
+                                    "name" : "ทุพพลภาพ",
+                                    "value" : 0
+                                },
+                                "dead" : {
+                                    "name" : "เสียชีวิต",
+                                    "value" : 0
+                                }
+                            },
+                            "losing" : {
+                                "medicalfree" : {
+                                    "name" : "ค่ารักษาพยาบาล",
+                                    "val" : ""
+                                },
+                                "propertylost" : {
+                                    "name" : "สูญเสียทรัพย์สินประมาณ",
+                                    "val" : ""
+                                },
+                                "funeralfree" : {
+                                    "name" : "ค่าทำขวัญ/ทำศพ",
+                                    "val" : ""
+                                }
+                            }                         
+                        },
+                        "accidenttype":{
+                            "type1":{
+                                "name" : "ลื่น,หกล้ม",
+                                "val" : 0
+                            },"type2":{
+                                "name" : "ออกแรงเกินกำลัง",
+                                "val" : 0
+                            },"type3":{
+                                "name" : "พลัดตกจากที่สูง",
+                                "val" : 0
+                            },"type4":{
+                                "name" : "อัคคีภัย",
+                                "val" : 0
+                            },"type5":{
+                                "name" : "วัตถุกระเด็น/หล่นใส่",
+                                "val" : 0
+                            },"type6":{
+                                "name" : "สัมผัสความร้อน",
+                                "val" : 0
+                            },"type7":{
+                                "name" : "ชน/กระแทก",
+                                "val" : 0
+                            },"type8":{
+                                "name" : "ถูกตัด/บาด",
+                                "val" : 0
+                            },"type9":{
+                                "name" : "ระเบิด/ฝุ่นระเบิด",
+                                "val" : 0
+                            },"type10":{
+                                "name" : "ถูกเจาะ,ทิ่ม",
+                                "val" : 0
+                            },"type11":{
+                                "name" : "ถูกหนีบ,ถูกดึง",
+                                "val" : 0
+                            },"type12":{
+                                "name" : "สัมผัสกระแสไฟฟ้า",
+                                "val" : 0
+                            },"type13":{
+                                "name" : "สัมผัสสารเคมี",
+                                "val" : 0
+                            },"type14":{
+                                "name" : "ยานยนต์",
+                                "val" : 0
+                            },"type15":{
+                                "name" : "สารเคมีรั่วไหล",
+                                "val" : 0
+                            }
+                        },
+                        "injured" : {
+                            "injured1":{
+                                "name" : "ศรีษะ",
+                                "val" : 0
+                            },"injured2":{
+                                "name" : "นัยต์ตา",
+                                "val" : 0
+                            },"injured3":{
+                                "name" : "นัยต์ตา",
+                                "val" : 0
+                            },"injured4":{
+                                "name" : "ลำคอ",
+                                "val" : 0
+                            },"injured5":{
+                                "name" : "หู",
+                                "val" : 0
+                            },"injured6":{
+                                "name" : "เท้า",
+                                "val" : 0
+                            },"injured7":{
+                                "name" : "หัวเข่า",
+                                "val" : 0
+                            },"injured8":{
+                                "name" : "ลำตัว",
+                                "val" : 0
+                            },"injured9":{
+                                "name" : "นิ้วมือ",
+                                "val" : 0
+                            },"injured10":{
+                                "name" : "มือ",
+                                "val" : 0
+                            },"injured11":{
+                                "name" : "หลัง",
+                                "val" : 0
+                            },"injured12":{
+                                "name" : "ไหล่",
+                                "val" : 0
+                            },"injured13":{
+                                "name" : "หน้าอก",
+                                "val" : 0
+                            },"injured14":{
+                                "name" : "สะโพก",
+                                "val" : 0
+                            },"injured15":{
+                                "name" : "ก้น",
+                                "val" : 0
+                            },"injured16":{
+                                "name" : "ขา",
+                                "val" : 0
+                            },"injured17":{
+                                "name" : "นิ้วเท้า",
+                                "val" : 0
+                            },"injured18":{
+                                "name" : "แขน",
+                                "val" : 0
+                            }
+                        },
+                        "remarkinjured": "",
+                        "remark" : "",
+                        "suggestion" : "",
+                        "personreport" : "",
+                        "personsecurity": "",
+                        "images" : ["URL1","URL2"]
+                    }]
                 },
                 "form17": {
 

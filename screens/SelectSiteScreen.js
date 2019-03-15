@@ -38,6 +38,7 @@ export default class SelectSiteScreen extends Component {
     return (
     
         <ScrollView style={styles.container}>
+          
             <FlatList 
            // horizontal = {false}
            // numColumns = {3}
@@ -45,18 +46,7 @@ export default class SelectSiteScreen extends Component {
             keyExtractor={(item, index) => item.id}
             renderItem={
             ({item}) => (
-            //    <Card
-            //     title={item.name}
-            //     image={require('../assets/images/robot-dev.png')}>
-            //     <Text style={{marginBottom: 10}}>
-            //     {item.name}
-            //     </Text>
-            //     <Button onPress={() => this.SelectSite(item)} style={styles.item}
-            //         icon={{name: 'code'}}
-            //         backgroundColor='#03A9F4'
-            //         buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-            //         title='VIEW NOW' />
-            //     </Card>
+            
             <TouchableOpacity  onPress={() => this.SelectSite(item)} style={styles.borderButton}>
             <View style={styles.titleContainer}>
             <View style={styles.titleIconContainer}>
@@ -106,6 +96,10 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.white,
         paddingTop: 10,
+    },
+    imageContainer:{
+      flexDirection: 'row',
+      justifyContent: 'center'
     },
     titleContainer: {
         paddingHorizontal: 15,

@@ -19,7 +19,24 @@ export default class DetailMenuScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
+      <View style={styles.imageContainer}>
+          <View style={styles.titleIconContainer}>
+              <Image 
+               source= {{uri : "https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png"}}
+               style={{ width: 150, height: 150 }}
+               resizeMode="cover"
+               />
+            </View>
       
+            <View style={styles.titleTextContainer}>
+            <Image
+               source= {{uri : "https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png"}}
+                style={{ width: 150, height: 150 }}
+               resizeMode="cover"
+               />
+            </View>
+          </View>
+
       <FlatList 
         horizontal = {false}
         numColumns = {3}
@@ -40,9 +57,6 @@ export default class DetailMenuScreen extends React.Component {
           )
         }
         />
-
-
-      
       </ScrollView>
     );
   }
@@ -53,6 +67,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white,
     paddingTop: 10,
+  },
+  imageContainer:{
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    borderBottomColor: '#dddddd',
+    borderBottomWidth: 1
+  },
+  titleIconContainer: {
+    marginRight: 15,
+    paddingTop: 2,
+    justifyContent:'center'
   },
   row: {
     flexDirection: 'row',
