@@ -1,3 +1,4 @@
+
 {
     "data": {
         "login": {
@@ -191,6 +192,7 @@
                                     }
                                 ]
                             },
+<<<<<<< HEAD
 
                             "instructions" : {
                                 "nitrogen1" : [
@@ -319,6 +321,8 @@
                                     }
                                 ]
                             },
+=======
+>>>>>>> 8b0c8e9e8c2174bf0abdd0ed7f3fe2e6855f8ebe
 
                             "instructions" : {
                                 "nitrogen1" : [
@@ -392,6 +396,137 @@
                                     }
                                 ]
                             }
+<<<<<<< HEAD
+=======
+                        },
+                        {
+                            "datein":"14/02/2562",
+                            "dept" : "",
+                            "condition":{
+                                "nitrogen" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "phosphorus" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "potassium" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "magnesium" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "calcium" :[
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "brimstone" :[
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "byron" : [
+                                    {
+                                        "base": "0",
+                                        "analyze" : "0",
+                                        "description" : ""
+                                    }
+                                ]
+                            },
+
+                            "instructions" : {
+                                "nitrogen1" : [
+                                    {
+                                        "base": "21-0-0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "nitrogen2" : [
+                                    {
+                                        "base": "46-0-0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "phosphorus1" : [
+                                    {
+                                        "base": "DAP",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "phosphorus2" : [
+                                    {
+                                        "base": "Rock PO",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "potassium" : [
+                                    {
+                                        "base": "0-0-60",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "magnesium" : [
+                                    {
+                                        "base": "คีเซอไรต์",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "dolomite" : [
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "calcium" :[
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "brimstone" :[
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ],
+                                "byron" : [
+                                    {
+                                        "base": "0",
+                                        "data" : "0",
+                                        "description" : ""
+                                    }
+                                ]
+                            }
+>>>>>>> 8b0c8e9e8c2174bf0abdd0ed7f3fe2e6855f8ebe
                         }
                     ]
                 },
