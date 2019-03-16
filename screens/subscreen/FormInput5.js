@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View } from 'react-native'
 
-export default class FormInput2 extends Component {
+export default class FormInput5 extends Component {
     static navigationOptions = ({navigation}) => {
         return{
           title: navigation.getParam('sitename', ''),
