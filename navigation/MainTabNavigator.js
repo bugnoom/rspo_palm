@@ -8,6 +8,8 @@ import DetailMenuScreen from '../screens/DetailMenuScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 
+import EditDataForm from '../screens/EditDataForm';
+
 import SelectSiteScreen from '../screens/SelectSiteScreen';
 import FormInput1 from '../screens/subscreen/FormInput1';
 import FormInput2 from '../screens/subscreen/FormInput2';
@@ -27,6 +29,7 @@ import FormInput15 from '../screens/subscreen/FormInput15';
 import FormInput16 from '../screens/subscreen/FormInput16';
 import FormInput17 from '../screens/subscreen/FormInput17';
 
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -44,6 +47,10 @@ HomeStack.navigationOptions = {
 const DetailMenuStack = createStackNavigator({
   SelectSiteScreen:{
     screen: SelectSiteScreen
+  },
+
+  EditDataForm:{
+    screen: EditDataForm
   },
   
   DetailScreen:{

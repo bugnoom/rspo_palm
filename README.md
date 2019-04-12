@@ -20,3 +20,5 @@ run for ios : `expo start --ios`
 
     
 eject project : `expo eject`
+
+

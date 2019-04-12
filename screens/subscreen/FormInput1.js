@@ -105,7 +105,7 @@ const list = [
 "conserve":""
 */
 
-export default class FormInput1 extends Component {
+export default class FormInput1 extends React.Component {
 
   static navigationOptions = ({navigation}) => {
     return{
@@ -119,12 +119,21 @@ export default class FormInput1 extends Component {
     const pagename = JSON.parse(navigation.getParam('data', ''));
     this.props.navigation.setParams({sitename: pagename[0]});
   }
+
+  componentWillMount(){
+    this.getdata();
+  }
+
+  getdata(){
+    const datalist = list
+    return datalist;
+  }
    
   render() {
     return (
         <ScrollView ScrollContentStyle={styles.constainer}>
         <View>
-          <CustomInputText list={list}  ></CustomInputText>
+          <CustomInputText list={list} getprops={this.props}  ></CustomInputText>
         </View>
         </ScrollView>
    

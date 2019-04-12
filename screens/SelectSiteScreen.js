@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, Platform, Image, View, Button, ScrollView, BackHandler, AsyncStorage, FlatList, TouchableOpacity } from 'react-native'
 
-import { Card } from 'react-native-elements';
-
 import { testData } from './../services/DataService';
 import { Colors, Fonts } from '../constants';
-
 
 export default class SelectSiteScreen extends Component {
     constructor(props){
@@ -36,43 +33,40 @@ export default class SelectSiteScreen extends Component {
 
   render() {
     return (
-    
-        <ScrollView style={styles.container}>
+      <ScrollView style={styles.container}>
           
-            <FlatList 
+          <FlatList
            // horizontal = {false}
            // numColumns = {3}
             data={testData.data.site}
             keyExtractor={(item, index) => item.id}
             renderItem={
-            ({item}) => (
+              ({item}) => (
+                <TouchableOpacity  onPress={() => this.SelectSite(item)} style={styles.borderButton}>
+                <View style={styles.titleContainer}>
+                  <View style={styles.titleIconContainer}>
+                    <AppIconPreview  />
+                  </View>
             
-            <TouchableOpacity  onPress={() => this.SelectSite(item)} style={styles.borderButton}>
-            <View style={styles.titleContainer}>
-            <View style={styles.titleIconContainer}>
-              <AppIconPreview  />
-            </View>
-      
-            <View style={styles.titleTextContainer}>
-              <Text style={styles.nameText} numberOfLines={1}>
-              {item.name}
-              </Text>
-      
-              <Text style={styles.slugText} numberOfLines={1}>
-              {item.address}
-              </Text>
-      
-              <Text style={styles.descriptionText}>
-              เนื้อที่  : {item.area} ตารางเมตร
-              </Text>
-            </View>
-          </View>
-          </TouchableOpacity>
-            )
+                  <View style={styles.titleTextContainer}>
+                    <Text style={styles.nameText} numberOfLines={1}>
+                      {item.name}
+                    </Text>
+                    <Text style={styles.slugText} numberOfLines={1}>
+                      {item.address}
+                    </Text>
+                    <Text style={styles.descriptionText}>
+                    เนื้อที่  : {item.area} ตารางเมตร
+                    </Text>
+                  </View>
+                
+                </View>
+                </TouchableOpacity>
+              )
             }
-            />
-        
-        </ScrollView>
+            >
+          </FlatList>
+      </ScrollView>
     )
   }
 }
@@ -106,6 +100,8 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         paddingBottom: 15,
         flexDirection: 'row',
+        borderBottomColor:'#aaaaaa',
+        borderBottomWidth:1
       },
       titleIconContainer: {
         marginRight: 15,

@@ -35,7 +35,7 @@ export default class LoginScreen extends Component {
         const { username, password } = this.state;
        console.log('test data is:', testData.data.login.username + ' == ' + username)
         // const data = () => {return testData};
-                if(testData.data.login.username == username && testData.data.login.password == password){
+                if(testData.data.login.username == username.toLowerCase() && testData.data.login.password == password.toLowerCase()){
                    this.Logedin();
                     this.props.navigation.navigate('App')
                 }else{
