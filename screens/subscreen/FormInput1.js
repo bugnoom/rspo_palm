@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, ScrollView, Button, TextInput, Label } from 're
 import { Colors, Fonts } from '../../constants';
 import CustomInputText from '../../components/CustomInputText';
 
+
 const list = [
   {
     name: 'รหัสแปลง',
@@ -42,7 +43,7 @@ const list = [
   },{
     name: 'ประเภท',
     id : 'type',
-    value: 'สวนปาล์ม หลังบ้าน',
+    value: 'โฉนด',
     selectlist:[{id:'1', value:'โฉนด'},{id:'2', value:'นส3. ก'}],
     selectedvalue:'1',
     readonly: false,
@@ -75,6 +76,67 @@ const list = [
     selectedvalue:'',
     readonly: false,
     type: 'text'
+  },{
+    name: 'จำนวนต้นตาย',
+    id: 'dead',
+    value: '0',
+    selectedvalue: '',
+    readonly: false,
+    type: 'text'
+  },{
+    name: 'จำนวนต้นปลูกทดแทน',
+    id: 'growback',
+    value: '0',
+    selectedvalue: '',
+    readonly: false,
+    type: 'text'
+  },{
+    name: "ปีที่ปลูกทดแทน (พ.ศ.)",
+    id: 'yeargrow',
+    value: '2540',
+    selectedvalue: '',
+    readonly: false,
+    type: 'text'
+  },{
+    name: 'วิธีปลูกต้นแทน',
+    id: 'solutiongrow',
+    value: '1',
+    selectedvalue: '1',
+    selectlist: [{}],
+    readonly: false,
+    type: "text"
+  },{
+    name: 'สาเหตุการตาย',
+    id: 'reasondead',
+    value: 'aaa',
+    selectedvalue: '',
+    readonly: false,
+    type: 'text'
+  },{
+    name:'พื้นที่ปลูกพืชอื่นๆในแปลงเช่น ยางพารา ผลไม้ เป็นต้น',
+    placeholder: 'มีรายละเอียดดังต่อไปนี้ (ระบุจำนวนไร่ของการใช้ประโยชน์)',
+    hasPic:[],
+    id : 'detailarea',
+    value: '',
+    selectedvalue: '',
+    readonly: false,
+    type: 'textarea'
+  },{
+    name: 'พื่นที่ที่ใช้ประโยชน์อื่นๆ เช่น สระน้ำ บ้านพักอาศัย เป็นต้น จำนวน',
+    placeholder: '',
+    id: 'benefitother',
+    value: '',
+    selectedvalue: '',
+    readonly: false,
+    type: 'textarea'
+  },{
+    name: 'พื้นที่ที่มีคุณค่าเชิงอนุรักษ์ในสวนปาล์มเช่น แม่น้ำสำคัญขนาดใหญ่ อ่างเก็บน้ำ เป็นต้น',
+    placeholder: '',
+    id: 'conserve',
+    value: '',
+    selectedvalue: '',
+    readonly: false,
+    type: 'textarea'
   }
 ]
 
@@ -140,9 +202,6 @@ export default class FormInput1 extends React.Component {
     )
   }
 }
-
-
-  
 
 
 const styles = StyleSheet.create({

@@ -28,6 +28,9 @@ import FormInput14 from '../screens/subscreen/FormInput14';
 import FormInput15 from '../screens/subscreen/FormInput15';
 import FormInput16 from '../screens/subscreen/FormInput16';
 import FormInput17 from '../screens/subscreen/FormInput17';
+import FormInput4_List from '../screens/subscreen/FormInput4_List';
+import FormInput4_AddEdit from '../screens/subscreen/FormInput4_AddEdit';
+
 
 
 const HomeStack = createStackNavigator({
@@ -68,6 +71,12 @@ const DetailMenuStack = createStackNavigator({
   },
   FormInput4:{
     screen: FormInput4
+  },
+  FormInput4_List:{
+    screen: FormInput4_List
+  },
+  FormInput4_AddEdit:{
+    screen: FormInput4_AddEdit
   },
   FormInput5:{
     screen: FormInput5

@@ -22,7 +22,7 @@
             "menuid": "4",
             "menuname": "ข้อมูลการให้ผลผลิต",
             "menuicon": "copy",
-            "menulink": "FormInput4"
+            "menulink": "FormInput4_List"
         },
         {
             "menuid": "5",

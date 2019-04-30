@@ -6,6 +6,86 @@ import { testData } from '../services/DataService';
 const textTitle = "ABC";
 const id = '';
 
+const sampleData =  [
+  {
+    seriesName: 'รายรับ',
+    data: [
+      {x: 'ม.ค.', y: 2000},
+      {x: 'ก.พ.', y: 1000},
+      {x: 'มี.ค.', y: 1400},
+      {x: 'เม.ย.', y: 1500},
+      {x: 'พ.ค.', y: 400},
+      {x: 'มิ.ย.', y: 450},
+      {x: 'มิ.ย.', y: 450},
+      {x: 'ก.ค.', y: 400},
+      {x: 'ส.ค.', y: 900},
+      {x: 'ก.ย.', y: 900},
+      {x: 'ต.ค.', y: 900},
+      {x: 'พ.ย.', y: 900},
+      {x: 'ธ.ค.', y: 900},
+    ],
+    color: 'green'
+  },
+  {
+    seriesName: 'รายจ่าย',
+    data: [
+      {x: 'ม.ค.', y: 2100},
+      {x: 'ก.พ.', y: 1500},
+      {x: 'มี.ค.', y: 1000},
+      {x: 'เม.ย.', y: 1150},
+      {x: 'พ.ค.', y: 450},
+      {x: 'มิ.ย.', y: 400},
+      {x: 'มิ.ย.', y: 400},
+      {x: 'ก.ค.', y: 450},
+      {x: 'ส.ค.', y: 450},
+      {x: 'ก.ย.', y: 450},
+      {x: 'ต.ค.', y: 450},
+      {x: 'พ.ย.', y: 450},
+      {x: 'ธ.ค.', y: 450},
+    ],
+    color: 'red'
+  }
+];
+const sampleData2 =  [
+  {
+    seriesName: 'รายรับ',
+    data: [
+      {x: 'ม.ค.', y: 2100},
+      {x: 'ก.พ.', y: 1300},
+      {x: 'มี.ค.', y: 1100},
+      {x: 'เม.ย.', y: 1300},
+      {x: 'พ.ค.', y: 500},
+      {x: 'มิ.ย.', y: 550},
+      {x: 'มิ.ย.', y: 550},
+      {x: 'ก.ค.', y: 500},
+      {x: 'ส.ค.', y: 500},
+      {x: 'ก.ย.', y: 500},
+      {x: 'ต.ค.', y: 500},
+      {x: 'พ.ย.', y: 500},
+      {x: 'ธ.ค.', y: 500},
+    ],
+    color: 'green'
+  },
+  {
+    seriesName: 'รายจ่าย',
+    data: [
+      {x: 'ม.ค.', y: 2500},
+      {x: 'ก.พ.', y: 1500},
+      {x: 'มี.ค.', y: 1200},
+      {x: 'เม.ย.', y: 1350},
+      {x: 'พ.ค.', y: 550},
+      {x: 'มิ.ย.', y: 500},
+      {x: 'มิ.ย.', y: 500},
+      {x: 'ก.ค.', y: 450},
+      {x: 'ส.ค.', y: 450},
+      {x: 'ก.ย.', y: 450},
+      {x: 'ต.ค.', y: 450},
+      {x: 'พ.ย.', y: 450},
+      {x: 'ธ.ค.', y: 450},
+    ],
+    color: 'red'
+  }
+];
 export default class HomeScreen extends React.Component {
  
   static navigationOptions = ({ navigation }) =>{
@@ -19,6 +99,14 @@ export default class HomeScreen extends React.Component {
     super(props);
 
    this.siteID();
+
+   this.state = {
+     graphdata: sampleData,
+     sitename: "",
+     income : 0,
+     outgoing: 0,
+     total: 0
+   }
   }
 
   siteID(){
@@ -41,7 +129,19 @@ export default class HomeScreen extends React.Component {
   }
 
   SelectSite = async(items) => {
-    const data = [];
+    this.setState({graphdata : this.loaddata(items)})
+    // const data = [];
+    // data.push(items);
+
+    // await AsyncStorage.setItem('siteID', JSON.stringify(data)).then(
+    //     () => {
+    //         this.props.navigation.navigate('DetailScreen')
+    //     }
+    // )
+}
+
+openSite = async(items) => {
+  const data = [];
     data.push(items);
 
     await AsyncStorage.setItem('siteID', JSON.stringify(data)).then(
@@ -51,64 +151,48 @@ export default class HomeScreen extends React.Component {
     )
 }
 
+componentDidMount(){
+  // console.log('data is ', loaddata())
+  this.setState({graphdata: this.loaddata(testData.data.site[0])})
+}
+
+loaddata(items){
+  this.setState({sitename: items.name})
+  switch(items.id){
+    case "1":
+      this.setState({income: '2,000', outgoing: '25,000', total: '-23,000'})
+      return sampleData
+    break;
+    case "2":
+    this.setState({income: '30,000', outgoing: '25,000', total: '5,000'})
+      return sampleData2
+    break;
+  }
+  
+}
+
   render() {
-    let sampleData = [
-      {
-        seriesName: 'รายรับ',
-        data: [
-          {x: 'ม.ค.', y: 2000},
-          {x: 'ก.พ.', y: 1000},
-          {x: 'มี.ค.', y: 1400},
-          {x: 'เม.ย.', y: 1500},
-          {x: 'พ.ค.', y: 400},
-          {x: 'มิ.ย.', y: 450},
-          {x: 'มิ.ย.', y: 450},
-          {x: 'ก.ค.', y: 400},
-          {x: 'ส.ค.', y: 900},
-          {x: 'ก.ย.', y: 900},
-          {x: 'ต.ค.', y: 900},
-          {x: 'พ.ย.', y: 900},
-          {x: 'ธ.ค.', y: 900},
-        ],
-        color: 'green'
-      },
-      {
-        seriesName: 'รายจ่าย',
-        data: [
-          {x: 'ม.ค.', y: 2100},
-          {x: 'ก.พ.', y: 1500},
-          {x: 'มี.ค.', y: 1000},
-          {x: 'เม.ย.', y: 1150},
-          {x: 'พ.ค.', y: 450},
-          {x: 'มิ.ย.', y: 400},
-          {x: 'มิ.ย.', y: 400},
-          {x: 'ก.ค.', y: 450},
-          {x: 'ส.ค.', y: 450},
-          {x: 'ก.ย.', y: 450},
-          {x: 'ต.ค.', y: 450},
-          {x: 'พ.ย.', y: 450},
-          {x: 'ธ.ค.', y: 450},
-        ],
-        color: 'red'
-      }
-    ];
+    
 
     return (
 
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <View style={{flex:1, flexDirection:"row", alignItems:"center"}}>
+            <Text style={{fontSize:17, justifyContent:"center", fontWeight:"bold", textAlign:"center", padding:10 }}>{this.state.sitename}</Text>
+          </View>
           <View style={{flex:1, flexDirection:"row", justifyContent:'space-around', marginBottom:20, padding:10}}>
             <View>
               <Text style={styles.titleSummery}>รายรับ</Text>
-              <Text style={{color:'#dd4b39', marginTop:5, textAlign:"center"}} >25,000</Text>
+              <Text style={{color:'#dd4b39', marginTop:5, textAlign:"center"}} >{this.state.income}</Text>
             </View>
             <View>
               <Text style={styles.titleSummery}>รายจ่าย</Text>
-              <Text  style={{ color:'#3d9400', marginTop:5, textAlign:"center"}} >25,000</Text>
+              <Text  style={{ color:'#3d9400', marginTop:5, textAlign:"center"}} >{this.state.outgoing}</Text>
             </View>
             <View>
               <Text style={styles.titleSummery}>สุทธิ</Text>
-              <Text style={{ color:'#FF0000', marginTop:5, textAlign:"center"}}>0</Text>
+              <Text style={{ color:'#FF0000', marginTop:5, textAlign:"center"}}>{this.state.total}</Text>
             </View>
           </View>
           <View style={{borderBottomColor:'#cccccc', borderBottomWidth:1, paddingBottom:10}}>
@@ -116,7 +200,7 @@ export default class HomeScreen extends React.Component {
               xAxisGridLineColor={'#cccccc'} 
               gap={45} width={'100%'} 
               height={300} 
-              data={sampleData} 
+              data={this.state.graphdata} 
               showEvenNumberXaxisLabel={false}
               customValueRenderer={(index, point) => {
                 return (
@@ -134,24 +218,30 @@ export default class HomeScreen extends React.Component {
             renderItem={
             ({item}) => (
             
-            <TouchableOpacity  onPress={() => this.SelectSite(item)} style={styles.borderButton}>
-            <View style={styles.titleContainer}>
             
-            <View style={styles.titleTextContainer}>
-              <Text style={styles.nameText} numberOfLines={1}>
-              {item.name}
-              </Text>
-      
-              <Text style={styles.slugText} numberOfLines={1}>
-              {item.address}
-              </Text>
-      
-              <Text style={styles.descriptionText}>
-              เนื้อที่  : {item.area} ตารางเมตร
-              </Text>
-            </View>
+            <View style={styles.titleContainer}>      
+            <TouchableOpacity  onPress={() => this.SelectSite(item)} style={styles.borderButton}>
+              <View style={styles.titleTextContainer}>
+                <Text style={styles.nameText} numberOfLines={1}>
+                {item.name}
+                </Text>
+        
+                <Text style={styles.slugText} numberOfLines={1}>
+                {item.address}
+                </Text>
+        
+                <Text style={styles.descriptionText}>
+                เนื้อที่  : {item.area} ตารางเมตร
+                </Text>
+              </View>
+              </TouchableOpacity>
+              <TouchableOpacity  onPress={() => this.openSite(item)} style={styles.borderButton}>
+              <View style={{textAlign:"right", marginTop:20}} >
+                <Text>Detail</Text>
+              </View>
+              </TouchableOpacity>
           </View>
-          </TouchableOpacity>
+          
             )
             }
             />
@@ -174,7 +264,8 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     flexDirection: 'row',
     borderBottomColor:'#aaaaaa',
-    borderBottomWidth:1
+    borderBottomWidth:1,
+    justifyContent:"space-between"
   },
   titleIconContainer: {
     marginRight: 15,
