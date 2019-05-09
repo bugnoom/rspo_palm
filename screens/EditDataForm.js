@@ -10,7 +10,8 @@ export default class EditDataForm extends React.Component {
     this.state = {
       data : this.props.navigation.getParam('data'),
       value : this.props.navigation.getParam('data').value,
-      selectvalue : this.props.navigation.getParam('data').selectedvalue
+      selectvalue : this.props.navigation.getParam('data').selectedvalue,
+      form : this.props.navigation.getParam('form')
     }
   }
 
@@ -29,8 +30,11 @@ export default class EditDataForm extends React.Component {
   }
 
   update = () => {
+    var formname = this.state.form;
     console.log("Update click now!!", this.state.selectvalue)
-    alert('update success');
+    alert('update success ' + formname);
+   
+   // this.props.navigation.navigate(formname, {valuedata:this.state})
   }
 
   textinput(data){
@@ -110,6 +114,7 @@ export default class EditDataForm extends React.Component {
       if( index === i ){
         this.setState({
           selectvalue: this.state.data.selectlist[index].id,
+          value : this.state.data.selectlist[index].id
        })
       }
      })

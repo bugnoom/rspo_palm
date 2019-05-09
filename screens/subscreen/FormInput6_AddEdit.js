@@ -20,20 +20,29 @@ const list = [
     readonly: false,
     type: 'datetime'
   },
-  
-]
-export default class FormInput4_AddEdit extends Component {
-  render() {
-    return (
-      <ScrollView ScrollContentStyle={styles.container} style={styles.container}>
-        <View>
-          <CustomInputText list={list} getprops={this.props}  ></CustomInputText>
-        </View>
-      </ScrollView>
-    )
+  {
+    name: 'แผนก',
+    id : 'code',
+    value: '001',
+    selectedvalue:'',
+    readonly: false,
+    type: 'text'
   }
+]
+
+
+export default class FormInput6_AddEdit extends Component {
+    render() {
+        return (
+          <ScrollView ScrollContentStyle={styles.container} style={styles.container}>
+            <View>
+              <CustomInputText list={list} getprops={this.props}  ></CustomInputText>
+            </View>
+          </ScrollView>
+        )
+      }
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', height:'100%' },
-})
+    container: { flex: 1, backgroundColor: '#fff', height:'100%' },
+  })

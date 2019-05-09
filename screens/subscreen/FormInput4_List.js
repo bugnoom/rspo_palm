@@ -7,7 +7,10 @@ import { Icon } from 'react-native-elements';
 
 
 export default class FormInput4_List extends React.Component {
+
+
   static navigationOptions = ({navigation}) => {
+    const { params = {} } = navigation.state;
     return{
       title: navigation.getParam('sitename', ''),
       headerRight: <TouchableOpacity  onPress={() => params.handleUpdate()}><Text style={styles.buttonAdd}>AddNew</Text></TouchableOpacity>
@@ -27,7 +30,16 @@ export default class FormInput4_List extends React.Component {
     }
   }
 
-  _alertIndex(index) {
+  componentDidMount(){
+    this.props.navigation.setParams({ handleUpdate : this.openform})
+    this.props.navigation.setParams({_alertIndex : this._alertIndex})
+  }
+
+  openform = () => {
+    this.props.navigation.navigate('FormInput4_AddEdit')
+  }
+
+  _alertIndex = (index) => {
     Alert.alert(`This is row ${index + 1}`);
   }
 
@@ -58,14 +70,9 @@ export default class FormInput4_List extends React.Component {
     )
   }
 
-  element = (index) => (
-    
-    
+  element = (id) => (
       <View  style={{width:this.state.widthArr[0]}}>
-      <Icon
-  name='edit'
-  color='#00aced'
-  onPress={() => this._alertIndex(index)} />
+      <Icon name='close' color='#FF0000' onPress={() => state._alertIndex(id)} />
       </View>
     
     
@@ -95,10 +102,10 @@ export default class FormInput4_List extends React.Component {
             <Text>ถึงวันที่ : </Text>
             {this._renderDatePicker('end')} 
           </View>
-          <View style={{alignItems:'flex-end'}}>
+          <View style={{alignItems:'flex-end', marginTop:40}}>
           <TouchableOpacity style={{justifyContent:"flex-end"}}>
             <Icon name='search'/>
-            <Text>Search</Text>
+            <Text>ค้นหา</Text>
           </TouchableOpacity>
           </View>
         </View>

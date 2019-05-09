@@ -30,6 +30,19 @@ import FormInput16 from '../screens/subscreen/FormInput16';
 import FormInput17 from '../screens/subscreen/FormInput17';
 import FormInput4_List from '../screens/subscreen/FormInput4_List';
 import FormInput4_AddEdit from '../screens/subscreen/FormInput4_AddEdit';
+import FormInput5_AddEdit from '../screens/subscreen/FormInput5_AddEdit';
+import FormInput6_AddEdit from '../screens/subscreen/FormInput6_AddEdit';
+import FormInput7_AddEdit from '../screens/subscreen/FormInput7_AddEdit';
+import FormInput8_AddEdit from '../screens/subscreen/FormInput8_AddEdit';
+import FormInput9_AddEdit from '../screens/subscreen/FormInput9_AddEdit';
+import FormInput10_AddEdit from '../screens/subscreen/FormInput10_AddEdit';
+import FormInput11_AddEdit from '../screens/subscreen/FormInput11_AddEdit';
+import FormInput12_AddEdit from '../screens/subscreen/FormInput12_AddEdit';
+import FormInput13_AddEdit from '../screens/subscreen/FormInput13_AddEdit';
+import FormInput14_AddEdit from '../screens/subscreen/FormInput14_AddEdit';
+import FormInput15_AddEdit from '../screens/subscreen/FormInput15_AddEdit';
+import FormInput16_AddEdit from '../screens/subscreen/FormInput16_AddEdit';
+import FormInput17_AddEdit from '../screens/subscreen/FormInput17_AddEdit';
 
 
 
@@ -81,42 +94,81 @@ const DetailMenuStack = createStackNavigator({
   FormInput5:{
     screen: FormInput5
   },
+  FormInput_AddEdit:{
+    screen: FormInput5_AddEdit
+  },
   FormInput6:{
     screen: FormInput6
+  },
+  FormInput6_AddEdit:{
+    screen: FormInput6_AddEdit
   },
   FormInput7:{
     screen: FormInput7
   },
+  FormInput7_AddEdit:{
+    screen: FormInput7_AddEdit
+  },
   FormInput8:{
     screen: FormInput8
+  },
+  FormInput8_AddEdit:{
+    screen: FormInput8_AddEdit
   },
   FormInput9:{
     screen: FormInput9
   },
+  FormInput9_AddEdit:{
+    screen: FormInput9_AddEdit
+  },
   FormInput10:{
     screen: FormInput10
+  },
+  FormInput10_AddEdit:{
+    screen: FormInput10_AddEdit
   },
   FormInput11:{
     screen: FormInput11
   },
+  FormInput11_AddEdit:{
+    screen: FormInput11_AddEdit
+  },
   FormInput12:{
     screen: FormInput12
+  },
+  FormInput12_AddEdit:{
+    screen: FormInput12_AddEdit
   },
   FormInput13:{
     screen: FormInput13
   },
+  FormInput13_AddEdit:{
+    screen: FormInput13_AddEdit
+  },
   FormInput14:{
     screen: FormInput14
+  },
+  FormInput14_AddEdit:{
+    screen: FormInput14_AddEdit
   },
   FormInput15:{
     screen: FormInput15
   },
+  FormInput15_AddEdit:{
+    screen: FormInput15_AddEdit
+  },
   FormInput16:{
     screen: FormInput16
+  },
+  FormInput16_AddEdit:{
+    screen: FormInput16_AddEdit
   },
   FormInput17:{
     screen: FormInput17
   },
+  FormInput17_AddEdit:{
+    screen: FormInput17_AddEdit
+  }
 });
 
 DetailMenuStack.navigationOptions = {

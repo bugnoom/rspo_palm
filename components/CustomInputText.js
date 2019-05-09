@@ -16,13 +16,16 @@ export default class CustomInputText extends Component {
 
   constructor(props) {
     super(props);
+    this.state={
+      dataValue : this.props.list
+    }
   }
- 
+
   keyExtractor = (item, index) => index.toString();
 
-  renderItem = ({ item }) => {   
+  renderItem = ({ item}) => {   
       return( 
-        <TouchableOpacity onPress={() => this.openmodal(item)} style={styles.item}>        
+        <TouchableOpacity onPress={() => this.openmodal(item,this.state.formname)} style={styles.item}>        
           <ListItem
             style={styles.ls}
             title={<Text style={styles.title}>{item.name}</Text>}
@@ -42,14 +45,16 @@ export default class CustomInputText extends Component {
         keyExtractor={this.keyExtractor}
         data={this.props.list}
         renderItem={this.renderItem}
+        
       />
     );
   }
 
   //create modal for show Edit input
-  openmodal(item) {
+  openmodal(item,formname) {
+    console.log('formname is : '+ formname);
     if (!item.readonly) {
-      this.props.getprops.navigation.navigate('EditDataForm',{data:item, field:item.name})
+      this.props.getprops.navigation.navigate('EditDataForm',{data:item, field:item.name, form:formname})
     } else {
       return;
     }

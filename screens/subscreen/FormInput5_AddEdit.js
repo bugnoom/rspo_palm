@@ -22,18 +22,20 @@ const list = [
   },
   
 ]
-export default class FormInput4_AddEdit extends Component {
-  render() {
-    return (
-      <ScrollView ScrollContentStyle={styles.container} style={styles.container}>
-        <View>
-          <CustomInputText list={list} getprops={this.props}  ></CustomInputText>
-        </View>
-      </ScrollView>
-    )
-  }
+
+export default class FormInput5_AddEdit extends Component {
+    render() {
+        return (
+          <ScrollView ScrollContentStyle={styles.container} style={styles.container}>
+            <View>
+              <CustomInputText list={list} getprops={this.props}  ></CustomInputText>
+            </View>
+          </ScrollView>
+        )
+      }
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', height:'100%' },
-})
+    container: { flex: 1, backgroundColor: '#fff', height:'100%' },
+  })
+  
