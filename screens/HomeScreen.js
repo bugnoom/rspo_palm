@@ -1,126 +1,145 @@
 import React from 'react';
-import {Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, Button, AsyncStorage, FlatList} from 'react-native';
+import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, Button, AsyncStorage, FlatList } from 'react-native';
 import PureChart from 'react-native-pure-chart';
-import { testData } from '../services/DataService';
+import { testData, getSiteInfo, getSiteList } from '../services/DataService';
 
 const textTitle = "ABC";
 const id = '';
 
-const sampleData =  [
+const sampleData = [
   {
     seriesName: 'รายรับ',
     data: [
-      {x: 'ม.ค.', y: 2000},
-      {x: 'ก.พ.', y: 1000},
-      {x: 'มี.ค.', y: 1400},
-      {x: 'เม.ย.', y: 1500},
-      {x: 'พ.ค.', y: 400},
-      {x: 'มิ.ย.', y: 450},
-      {x: 'มิ.ย.', y: 450},
-      {x: 'ก.ค.', y: 400},
-      {x: 'ส.ค.', y: 900},
-      {x: 'ก.ย.', y: 900},
-      {x: 'ต.ค.', y: 900},
-      {x: 'พ.ย.', y: 900},
-      {x: 'ธ.ค.', y: 900},
+      { x: 'ม.ค.', y: 2000 },
+      { x: 'ก.พ.', y: 1000 },
+      { x: 'มี.ค.', y: 1400 },
+      { x: 'เม.ย.', y: 1500 },
+      { x: 'พ.ค.', y: 400 },
+      { x: 'มิ.ย.', y: 450 },
+      { x: 'มิ.ย.', y: 450 },
+      { x: 'ก.ค.', y: 400 },
+      { x: 'ส.ค.', y: 900 },
+      { x: 'ก.ย.', y: 900 },
+      { x: 'ต.ค.', y: 900 },
+      { x: 'พ.ย.', y: 900 },
+      { x: 'ธ.ค.', y: 900 },
     ],
     color: 'green'
   },
   {
     seriesName: 'รายจ่าย',
     data: [
-      {x: 'ม.ค.', y: 2100},
-      {x: 'ก.พ.', y: 1500},
-      {x: 'มี.ค.', y: 1000},
-      {x: 'เม.ย.', y: 1150},
-      {x: 'พ.ค.', y: 450},
-      {x: 'มิ.ย.', y: 400},
-      {x: 'มิ.ย.', y: 400},
-      {x: 'ก.ค.', y: 450},
-      {x: 'ส.ค.', y: 450},
-      {x: 'ก.ย.', y: 450},
-      {x: 'ต.ค.', y: 450},
-      {x: 'พ.ย.', y: 450},
-      {x: 'ธ.ค.', y: 450},
+      { x: 'ม.ค.', y: 2100 },
+      { x: 'ก.พ.', y: 1500 },
+      { x: 'มี.ค.', y: 1000 },
+      { x: 'เม.ย.', y: 1150 },
+      { x: 'พ.ค.', y: 450 },
+      { x: 'มิ.ย.', y: 400 },
+      { x: 'มิ.ย.', y: 400 },
+      { x: 'ก.ค.', y: 450 },
+      { x: 'ส.ค.', y: 450 },
+      { x: 'ก.ย.', y: 450 },
+      { x: 'ต.ค.', y: 450 },
+      { x: 'พ.ย.', y: 450 },
+      { x: 'ธ.ค.', y: 450 },
     ],
     color: 'red'
   }
 ];
-const sampleData2 =  [
+const sampleData2 = [
   {
     seriesName: 'รายรับ',
     data: [
-      {x: 'ม.ค.', y: 2100},
-      {x: 'ก.พ.', y: 1300},
-      {x: 'มี.ค.', y: 1100},
-      {x: 'เม.ย.', y: 1300},
-      {x: 'พ.ค.', y: 500},
-      {x: 'มิ.ย.', y: 550},
-      {x: 'มิ.ย.', y: 550},
-      {x: 'ก.ค.', y: 500},
-      {x: 'ส.ค.', y: 500},
-      {x: 'ก.ย.', y: 500},
-      {x: 'ต.ค.', y: 500},
-      {x: 'พ.ย.', y: 500},
-      {x: 'ธ.ค.', y: 500},
+      { x: 'ม.ค.', y: 2100 },
+      { x: 'ก.พ.', y: 1300 },
+      { x: 'มี.ค.', y: 1100 },
+      { x: 'เม.ย.', y: 1300 },
+      { x: 'พ.ค.', y: 500 },
+      { x: 'มิ.ย.', y: 550 },
+      { x: 'มิ.ย.', y: 550 },
+      { x: 'ก.ค.', y: 500 },
+      { x: 'ส.ค.', y: 500 },
+      { x: 'ก.ย.', y: 500 },
+      { x: 'ต.ค.', y: 500 },
+      { x: 'พ.ย.', y: 500 },
+      { x: 'ธ.ค.', y: 500 },
     ],
     color: 'green'
   },
   {
     seriesName: 'รายจ่าย',
     data: [
-      {x: 'ม.ค.', y: 2500},
-      {x: 'ก.พ.', y: 1500},
-      {x: 'มี.ค.', y: 1200},
-      {x: 'เม.ย.', y: 1350},
-      {x: 'พ.ค.', y: 550},
-      {x: 'มิ.ย.', y: 500},
-      {x: 'มิ.ย.', y: 500},
-      {x: 'ก.ค.', y: 450},
-      {x: 'ส.ค.', y: 450},
-      {x: 'ก.ย.', y: 450},
-      {x: 'ต.ค.', y: 450},
-      {x: 'พ.ย.', y: 450},
-      {x: 'ธ.ค.', y: 450},
+      { x: 'ม.ค.', y: 2500 },
+      { x: 'ก.พ.', y: 1500 },
+      { x: 'มี.ค.', y: 1200 },
+      { x: 'เม.ย.', y: 1350 },
+      { x: 'พ.ค.', y: 550 },
+      { x: 'มิ.ย.', y: 500 },
+      { x: 'มิ.ย.', y: 500 },
+      { x: 'ก.ค.', y: 450 },
+      { x: 'ส.ค.', y: 450 },
+      { x: 'ก.ย.', y: 450 },
+      { x: 'ต.ค.', y: 450 },
+      { x: 'พ.ย.', y: 450 },
+      { x: 'ธ.ค.', y: 450 },
     ],
     color: 'red'
   }
 ];
+
 export default class HomeScreen extends React.Component {
- 
-  static navigationOptions = ({ navigation }) =>{
+  static navigationOptions = ({ navigation }) => {
     return {
-      title : navigation.getParam('sitename', 'Dashboard'),
+      title: navigation.getParam('sitename', 'Dashboard'),
     }
-   
   };
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
-   this.siteID();
+    this.siteID();
+    this.getData();
 
-   this.state = {
-     graphdata: sampleData,
-     sitename: "",
-     income : 0,
-     outgoing: 0,
-     total: 0
-   }
+    this.state = {
+      graphdata: sampleData,
+      sitename: "",
+      income: 0,
+      outgoing: 0,
+      total: 0,
+      sitedata: ""
+    }
   }
 
-  siteID(){
-   AsyncStorage.getItem('siteID').then(
-     (res) => {
-       const data = JSON.parse(res);
-     //  this.props.navigation.setParams({sitename: data[0].name});
-     // console.log("site ID is",data[0].name);
-     }
-   );
-  
+  getData = () => {
+    let sitdata = []
+    AsyncStorage.getItem('user_id',(err, result) => {
+      getSiteList(result).then((res) => {
+        console.log('site list', res);
+        res.data.map((item, key) =>{
+           getSiteInfo(item.id).then((data) =>{
+            sitdata.push(data.data);
+            this.setState({sitedata: sitdata})
+           //console.log('info data', data.data);
+          });
+          
+        })
+        
+      });
+    });
   }
 
-  backtoselectsite = async() => {
+  siteID() {
+    AsyncStorage.getItem('siteID').then(
+      (res) => {
+        const data = JSON.parse(res);
+        //  this.props.navigation.setParams({sitename: data[0].name});
+        // console.log("site ID is",data[0].name);
+      }
+    );
+
+  }
+
+  backtoselectsite = async () => {
     AsyncStorage.removeItem('siteID').then(
       () => {
         this.props.navigation.navigate('LoginScreen');
@@ -128,8 +147,8 @@ export default class HomeScreen extends React.Component {
     )
   }
 
-  SelectSite = async(items) => {
-    this.setState({graphdata : this.loaddata(items)})
+  SelectSite = async (items) => {
+    this.setState({ graphdata: this.loaddata(items) })
     // const data = [];
     // data.push(items);
 
@@ -138,112 +157,118 @@ export default class HomeScreen extends React.Component {
     //         this.props.navigation.navigate('DetailScreen')
     //     }
     // )
-}
+  }
 
-openSite = async(items) => {
-  const data = [];
+  openSite = async (items) => {
+    const data = [];
     data.push(items);
 
     await AsyncStorage.setItem('siteID', JSON.stringify(data)).then(
-        () => {
-            this.props.navigation.navigate('DetailScreen')
-        }
+      () => {
+        this.props.navigation.navigate('DetailScreen')
+      }
     )
-}
-
-componentDidMount(){
-  // console.log('data is ', loaddata())
-  this.setState({graphdata: this.loaddata(testData.data.site[0])})
-}
-
-loaddata(items){
-  this.setState({sitename: items.name})
-  switch(items.id){
-    case "1":
-      this.setState({income: '2,000', outgoing: '25,000', total: '-23,000'})
-      return sampleData
-    break;
-    case "2":
-    this.setState({income: '30,000', outgoing: '25,000', total: '5,000'})
-      return sampleData2
-    break;
   }
-  
-}
 
-  render() {
+  componentDidMount() {
+    // console.log('data is ', loaddata())
+    this.setState({ graphdata: this.loaddata(testData.data.site[0]) })
+  }
+
+  loaddata(items) {
+    this.setState({ sitename: items.name })
+    switch (items.id) {
+      case "1":
+        this.setState({ income: '2,000', outgoing: '25,000', total: '-23,000' })
+        return sampleData
+      case "2":
+        this.setState({ income: '30,000', outgoing: '25,000', total: '5,000' })
+        return sampleData2
+        case "3":
+        this.setState({ income: '30,000', outgoing: '25,000', total: '5,000' })
+        return sampleData2
+        case "4":
+        this.setState({ income: '30,000', outgoing: '25,000', total: '5,000' })
+        return sampleData2
+        case "5":
+        this.setState({ income: '30,000', outgoing: '25,000', total: '5,000' })
+        return sampleData2
+        case "6":
+        this.setState({ income: '30,000', outgoing: '25,000', total: '5,000' })
+        return sampleData2
+    }
     
 
-    return (
+  }
 
+  render() {
+    return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={{flex:1, flexDirection:"row", alignItems:"center"}}>
-            <Text style={{fontSize:17, justifyContent:"center", fontWeight:"bold", textAlign:"center", padding:10 }}>{this.state.sitename}</Text>
+          <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+            <Text style={{ fontSize: 17, justifyContent: "center", fontWeight: "bold", textAlign: "center", padding: 10 }}>{this.state.sitename}</Text>
           </View>
-          <View style={{flex:1, flexDirection:"row", justifyContent:'space-around', marginBottom:20, padding:10}}>
+          <View style={{ flex: 1, flexDirection: "row", justifyContent: 'space-around', marginBottom: 20, padding: 10 }}>
             <View>
               <Text style={styles.titleSummery}>รายรับ</Text>
-              <Text style={{color:'#dd4b39', marginTop:5, textAlign:"center"}} >{this.state.income}</Text>
+              <Text style={{ color: '#dd4b39', marginTop: 5, textAlign: "center" }} >{this.state.income}</Text>
             </View>
             <View>
               <Text style={styles.titleSummery}>รายจ่าย</Text>
-              <Text  style={{ color:'#3d9400', marginTop:5, textAlign:"center"}} >{this.state.outgoing}</Text>
+              <Text style={{ color: '#3d9400', marginTop: 5, textAlign: "center" }} >{this.state.outgoing}</Text>
             </View>
             <View>
               <Text style={styles.titleSummery}>สุทธิ</Text>
-              <Text style={{ color:'#FF0000', marginTop:5, textAlign:"center"}}>{this.state.total}</Text>
+              <Text style={{ color: '#FF0000', marginTop: 5, textAlign: "center" }}>{this.state.total}</Text>
             </View>
           </View>
-          <View style={{borderBottomColor:'#cccccc', borderBottomWidth:1, paddingBottom:10}}>
-            <PureChart 
-              xAxisGridLineColor={'#cccccc'} 
-              gap={45} width={'100%'} 
-              height={300} 
-              data={this.state.graphdata} 
+          <View style={{ borderBottomColor: '#cccccc', borderBottomWidth: 1, paddingBottom: 10 }}>
+            <PureChart
+              xAxisGridLineColor={'#cccccc'}
+              gap={45} width={'100%'}
+              height={300}
+              data={this.state.graphdata}
               showEvenNumberXaxisLabel={false}
               customValueRenderer={(index, point) => {
                 return (
-                  <Text style={{textAlign: 'center', fontSize:10}}>{point.y}</Text>
+                  <Text style={{ textAlign: 'center', fontSize: 10 }}>{point.y}</Text>
                 )
-              }} 
+              }}
               type='line' />
           </View>
           <View>
-          <FlatList 
-           // horizontal = {false}
-           // numColumns = {3}
-            data={testData.data.site}
-            keyExtractor={(item, index) => item.id}
-            renderItem={
-            ({item}) => (
-            
-            
-            <View style={styles.titleContainer}>      
-            <TouchableOpacity  onPress={() => this.SelectSite(item)} style={styles.borderButton}>
-              <View style={styles.titleTextContainer}>
-                <Text style={styles.nameText} numberOfLines={1}>
-                {item.name}
+            <FlatList
+              // horizontal = {false}
+              // numColumns = {3}
+              data={this.state.sitedata}
+              keyExtractor={(item, index) => item.id}
+              renderItem={
+                ({ item }) => (
+                  <View style={styles.titleContainer}>
+                    <TouchableOpacity onPress={() => this.SelectSite(item)} style={styles.borderButton}>
+                      <View style={styles.titleTextContainer}>
+                        <Text style={styles.nameText} numberOfLines={1}>
+                          {item.name}
+                        </Text>
+
+                        <Text style={styles.slugText} numberOfLines={1}>
+                          {item.address}
+                        </Text>
+
+                        <Text style={styles.descriptionText}>
+                          เนื้อที่  : {item.area} ตารางเมตร
                 </Text>
-        
-                <Text style={styles.slugText} numberOfLines={1}>
-                {item.address}
-                </Text>
-        
-                <Text style={styles.descriptionText}>
-                เนื้อที่  : {item.area} ตารางเมตร
-                </Text>
-              </View>
-              </TouchableOpacity>
-              <TouchableOpacity  onPress={() => this.openSite(item)} style={styles.borderButton}>
-              <View style={{textAlign:"right", marginTop:20}} >
-                <Text>Detail</Text>
-              </View>
-              </TouchableOpacity>
-          </View>
-          
-            )
-            }
+                      </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.openSite(item)} style={styles.borderButton}>
+                      <View style={{ textAlign: "right", marginTop: 20 }} >
+                        <Text>Detail</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+
+                )
+              }
             />
           </View>
           {/* <LogoutButton page="signout" />
@@ -263,9 +288,9 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     flexDirection: 'row',
-    borderBottomColor:'#aaaaaa',
-    borderBottomWidth:1,
-    justifyContent:"space-between"
+    borderBottomColor: '#aaaaaa',
+    borderBottomWidth: 1,
+    justifyContent: "space-between"
   },
   titleIconContainer: {
     marginRight: 15,
@@ -275,9 +300,9 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 18,
   },
-  titleSummery:{
-    textAlign:'center', 
-    fontWeight:'bold'
+  titleSummery: {
+    textAlign: 'center',
+    fontWeight: 'bold'
   },
   container: {
     flex: 1,

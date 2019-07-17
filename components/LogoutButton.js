@@ -1,10 +1,9 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { Platform, Text, View, Button, AsyncStorage, StyleSheet, TouchableOpacity} from 'react-native'
-import { withNavigation } from 'react-navigation';
 import { Icon } from 'expo';
 import { Colors, Fonts } from '../constants';
 
- class LogoutButton extends PureComponent {
+export default class LogoutButton extends React.Component{
     constructor(props){
         super(props)
     }
@@ -58,5 +57,3 @@ const styles = StyleSheet.create({
     marginLeft:10
   },
 })
-
-export default withNavigation(LogoutButton);

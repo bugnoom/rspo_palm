@@ -27,6 +27,7 @@ export default class EditDataForm extends React.Component {
 
   componentDidMount(){
     this.props.navigation.setParams({ handleUpdate : this.update})
+    console.log('value data is ', this.state.data)
   }
 
   update = () => {
@@ -49,7 +50,7 @@ export default class EditDataForm extends React.Component {
         autoFocus={true}
         />
       )
-      break;
+      
       case 'selectbox':
       return(
         <Picker
@@ -65,7 +66,7 @@ export default class EditDataForm extends React.Component {
           
         </Picker>
       )
-      break;
+      
       case "datetime":
       return(
         <DatePicker
@@ -90,7 +91,7 @@ export default class EditDataForm extends React.Component {
             onDateChange={(date) => {this.setState({selectvalue: date})}}
         />
       )
-      break;
+      
       case "textarea":
           return(
             <TextInput value = {this.state.value}
@@ -104,7 +105,7 @@ export default class EditDataForm extends React.Component {
               placeholder={this.state.data.placeholder}
               />
           )
-      break;
+     
     }
     
   }

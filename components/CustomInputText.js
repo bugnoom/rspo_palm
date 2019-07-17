@@ -59,7 +59,81 @@ export default class CustomInputText extends Component {
       return;
     }
   }
+
+  textinput(data) {
+    switch(data.type){
+      case 'text':
+      return(
+        <TextInput value = {this.state.value}
+        style={{width:'100%', height:60, borderBottomWidth:1, borderBottomColor:'#cccccc', padding:10}}
+        editable={true}
+        clearButtonMode='always'
+        onChangeText={(value) => this.setState({value})}
+        autoFocus={true}
+        />
+      )
+      
+      case 'selectbox':
+      return(
+        <Picker
+          selectedValue={this.state.selectvalue}
+          style={{width:'100%', height:100}}
+          onValueChange={(itemValue, itemIndex) => this.pickerChange(itemIndex)}
+        >
+        {
+          this.state.data.selectlist.map( (v) =>{
+            return <Picker.Item key={v.id} label={v.value} value={v.id} />
+          })
+        }
+          
+        </Picker>
+      )
+      
+      case "datetime":
+      return(
+        <DatePicker
+            style={{width: '90%', marginTop:10 }}
+            date={this.state.selectvalue}
+            mode="date"
+            placeholder="select date"
+            format="DD/MM/YYYY" 
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={{
+              dateIcon: {
+                position: 'absolute',
+                left: 0,
+                top: 4,
+                marginLeft: 0
+              },
+              dateInput: {
+                marginLeft: 36
+              }
+            }}
+            onDateChange={(date) => {this.setState({selectvalue: date})}}
+        />
+      )
+      
+      case "textarea":
+          return(
+            <TextInput value = {this.state.value}
+              style={{width:'100%',height:90, borderBottomWidth:1, borderBottomColor:'#cccccc', padding:10}}
+              editable={true}
+              clearButtonMode='always'
+              onChangeText={(value) => this.setState({value})}
+              autoFocus={true}
+              numberOfLines = {5}
+              multiline={true}
+              placeholder={this.state.data.placeholder}
+              />
+          )
+     
+    }
+    
+  }
 }
+
+
 
 const styles = StyleSheet.create({
   ls: {

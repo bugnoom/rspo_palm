@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, ScrollView, Button, Keyboard, TextInput, Alert, TouchableOpacity, AsyncStorage} from 'react-native'
-import { testData } from './../services/DataService';
+import { testData, checkLogin } from './../services/DataService';
 import { Colors } from '../constants'
 
 export default class LoginScreen extends Component {
@@ -27,20 +27,37 @@ export default class LoginScreen extends Component {
       
     }
 
-    Logedin = async() => {
-        await AsyncStorage.setItem('logedin', 'Y')
+    Logedin = async(data) => {
+        await AsyncStorage.multiSet([
+            ['logedin', 'Y'],
+            ['user_id',data.id],
+            ['username',data.name],
+            ['package',data.package]
+        ]);
+       // await AsyncStorage.setItem('data', data);
     }
 
     onLogin(){
         const { username, password } = this.state;
-       console.log('test data is:', testData.data.login.username + ' == ' + username)
+       console.log('test data is:', ' == ' + username)
+       if(username == ''){Alert.alert('Please input username'); return;}
+        checkLogin(username,password).then((res)=>{
+            console.log(res);
+            if(res.data.id){
+                Alert.alert(res.status.message);
+                this.Logedin(res.data);
+                this.props.navigation.navigate('App')
+            }else{
+                Alert.alert("Login",'Invalid Login please check username and password ');
+            }
+        })
         // const data = () => {return testData};
-                if(testData.data.login.username == username.toLowerCase() && testData.data.login.password == password.toLowerCase()){
-                   this.Logedin();
-                    this.props.navigation.navigate('App')
-                }else{
-                    Alert.alert("Login",'Invalid Login please check username and password ');
-                }
+                // if(testData.data.login.username == username.toLowerCase() && testData.data.login.password == password.toLowerCase()){
+                //    this.Logedin();
+                //     this.props.navigation.navigate('App')
+                // }else{
+                //     Alert.alert("Login",'Invalid Login please check username and password ');
+                // }
     }
 
     forgotpass(){

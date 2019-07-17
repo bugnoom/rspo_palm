@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, StyleSheet, View, ScrollView, Button, TextInput, Label } from 'react-native'
 import { Colors, Fonts } from '../../constants';
 import CustomInputText from '../../components/CustomInputText';
+import { createStore, combineReducers } from 'redux';
 
 
 const list = [
@@ -140,6 +141,8 @@ const list = [
   }
 ]
 
+initStateData = list;
+
 
 /*
 "code": "1",
@@ -190,12 +193,27 @@ export default class FormInput1 extends React.Component {
     const datalist = list
     return datalist;
   }
+
+  reducerdata = (state = initStateData, action) =>{
+    switch(action.type){
+      case "update" : 
+      return Object.assign({},state,{
+        data:state.data.map(item=>{
+          return item.id === action.payload.id ? action.payload: item;
+        })
+      })
+      default: return state
+    }
+  }
    
   render() {
+    const store = createStore(this.reducerdata, initStateData);
+    console.log(store.getState());
     return (
         <ScrollView ScrollContentStyle={styles.constainer}>
         <View>
-          <CustomInputText list={list} getprops={this.props}  ></CustomInputText>
+          <CustomInputText list={store.getState()} getprops={this.props}  ></CustomInputText> 
+         
         </View>
         </ScrollView>
    
@@ -212,4 +230,18 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10
   },
+  ls: {
+    borderBottomColor: "#bbb",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    paddingTop: 1
+  },
+  title: {
+    color: Colors.tabIconDefault
+  },
+  subtitle: {
+    paddingLeft: "3%",
+    color: Colors.primary,
+    fontSize: 18,
+    paddingTop: 2
+  }
 })

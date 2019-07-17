@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, Platform, Image, View, Button, ScrollView, BackHandler, AsyncStorage, FlatList, TouchableOpacity } from 'react-native'
 
-import { testData } from './../services/DataService';
+import { testData, getSiteList, getSiteInfo } from './../services/DataService';
 import { Colors, Fonts } from '../constants';
 
 export default class SelectSiteScreen extends Component {
     constructor(props){
         super(props);
-
         this.SelectSite = this.SelectSite.bind(this);
-       
+        
+        this.state ={
+          sitedata: ""
+        }
+
+        this.getData()
+        
     }
 
     // static navigationOptions = {
@@ -31,14 +36,38 @@ export default class SelectSiteScreen extends Component {
         )
     }
 
+    getData = () => {
+      let sitdata = []
+      AsyncStorage.getItem('user_id',(err, result) => {
+        getSiteList(result).then((res) => {
+          console.log('site list', res);
+          res.data.map((item, key) =>{
+             getSiteInfo(item.id).then((data) =>{
+              sitdata.push(data.data);
+              this.setState({sitedata: sitdata})
+             //console.log('info data', data.data);
+            });
+            
+          })
+          
+        });
+      });
+    }
+    
+
   render() {
+   
+   // let a = this.state.sitedata; 
+    
+   // console.log(this.state.sitedata);
+   
     return (
       <ScrollView style={styles.container}>
           
           <FlatList
            // horizontal = {false}
            // numColumns = {3}
-            data={testData.data.site}
+            data={this.state.sitedata } //testData.data.site}
             keyExtractor={(item, index) => item.id}
             renderItem={
               ({item}) => (

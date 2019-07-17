@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
 import { createSwitchNavigator, createStackNavigator } from 'react-navigation';
-import { Text, TouchableOpacity, Button } from 'react-native';
 
 import MainTabNavigator from './MainTabNavigator';
 import LoginScreen from './../screens/LoginScreen';
