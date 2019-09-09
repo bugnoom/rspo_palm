@@ -77,4 +77,109 @@ export const updateSiteDetail = async(siteData) =>{
     return await res;
 }
 
+export const updateBasicInfomation = async(basicData) =>{
+    const body = JSON.stringify({
+         "id": basicData['id'],
+         "state" : 2,
+         "statesoil": basicData['statesoil'],
+         "typearea" : basicData['typearea'],
+         "typeareamark": basicData['typeareamark'],
+         "typesoil": basicData['typeoil'],
+         "typesoilother": basicData['typesoilother'],
+         "plantingarea": basicData['plantingarea'],
+         "plantingareaother": basicData['plantingareaother'],
+         "soilconservation": basicData['soilconservation'],
+         "soilconservationother": basicData['soilconservationother'],
+         "wateringmethod": basicData['wateringmethod'],
+         "sourcewater": basicData['sourcewater'],
+         "usebefore": basicData['usebefore'],
+         "pattern": basicData['pattern'],
+         "phase": basicData['phase'],
+         "harvesting": basicData['harvesting'],
+         "harvestingother": basicData['harvestingother']
+    })
+    const res = await fetch(APIURL + '/info/update.php',{
+        method: 'POST',
+        headers: header,
+        body: body
+    }).then((response) => response.json());
+    return await res;
+}
+
+export const updatePlamspaceInfo = async(spaceinfo)=>{
+    const body = JSON.stringify({
+        "id": spaceinfo['id'],
+        "state": 3,
+        "originsoil": spaceinfo['originsoil'],
+        "originsoilother": spaceinfo['originsoilother'],
+        "kindsoil": spaceinfo['kindsoil'],
+        "kindsoilcompany": spaceinfo['kindsoilcompany'],
+        "choosesoil": spaceinfo['choosesoil'],
+        "oldsoil": spaceinfo['oldsoil']
+    })
+    const res = await fetch(APIURL + '/info/update.php',{
+        method: 'POST',
+        headers: header,
+        body: body
+    }).then((response) => response.json());
+    return await res;
+}
+
+export const getProductInfoList = async(plam_id) =>{
+    const body = JSON.stringify({
+        "palm" : plam_id
+    })
+    const res = await fetch(APIURL + '/yield/list.php',{
+        method: 'POST',
+        headers: header,
+        body: body
+    }).then((response) => response.json());
+    return await res;
+}
+
+export const createProductInfo = async(product) =>{
+    const body = JSON.stringify({
+        "palm": product['plam_id'],
+        "datein": product['datein'],
+        "billnumber": product['billnumber'],
+        "numerative": product['numerative'],
+        "numerativeprice": product['numerativeprice'],
+        "seedfail": product['seedfail'],
+        "seedfailprice": product['seedfailprice'],
+        "earnings": product['earnings'],
+        "earningsseedfail": product['earningsseedfail']
+    })
+    const res = await fetch(APIURL + '/yield/create.php',{
+        method: 'POST',
+        headers: header,
+        body: body
+    }).then((response) => response.json());
+    return await res;
+}
+
+export const getGraphInfo = async(site_id,year) => {
+    if(year == null){
+        year = new Date().getFullYear()+543;
+    }
+    const body = JSON.stringify({
+            "palm":site_id,
+            "year":year
+    })
+
+    const response = {
+        income: 0,
+        outgoing: 0, 
+        total: 0,
+        incomedata : [],
+        outgoingdata: []
+    }
+
+    const res = await fetch(APIURL + '/expense/summation.php',{
+        method: 'POST',
+        headers: header,
+        body: body
+    }).then((resp)=> resp.json());
+    return await res;
+}
+
 export const testData = api;

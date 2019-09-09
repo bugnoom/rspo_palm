@@ -20,6 +20,8 @@
     "react-native-datepicker": "^1.7.2",
     "react-native-elements": "^1.0.0",
     "react-native-form-builder": "^1.0.16",
+    "react-native-keyboard-aware-scroll-view": "^0.9.1",
+    "react-native-picker-select": "^6.3.2",
     "react-native-pure-chart": "0.0.24",
     "react-native-table-component": "^1.2.0",
     "react-native-textinput-effects": "^0.4.2",

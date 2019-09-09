@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, Button, AsyncStorage, FlatList } from 'react-native';
 import PureChart from 'react-native-pure-chart';
-import { testData, getSiteInfo, getSiteList } from '../services/DataService';
+import { testData, getSiteInfo, getSiteList, getGraphInfo } from '../services/DataService';
 
 const textTitle = "ABC";
 const id = '';
@@ -176,6 +176,10 @@ export default class HomeScreen extends React.Component {
   }
 
   loaddata(items) {
+    getGraphInfo(items.id).then(res =>{
+      let is_now = new Date().getFullYear()+543;
+      console.log("graph", res.income);
+    });
     this.setState({ sitename: items.name })
     switch (items.id) {
       case "1":

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, ScrollView, StyleSheet, View, TouchableOpacity, Image, Text, FlatList } from 'react-native';
+import { Platform, ScrollView, StyleSheet, View, TouchableOpacity, Image, Text, FlatList, AsyncStorage } from 'react-native';
 import { Colors, Fonts } from '../constants';
 import { Icon } from 'expo';
 
@@ -16,10 +16,28 @@ export default class DetailMenuScreen extends React.Component {
     this.props.navigation.navigate(name,{ data:JSON.stringify(menudata)})
   }
 
+  constructor(props){
+    super(props);
+    this.state = {
+      sitedetail:''
+    }
+    this.getdetail();
+  }
+
+  getdetail(){
+    AsyncStorage.getItem('siteID',(err, result) => {
+      let data = JSON.parse(result);
+      console.log('storage data is : ', data);
+      this.setState({sitedetail: data[0]})
+    });
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
+         <Text style={{fontSize:20, fontWeight:"bold", textAlign:"center"}}>ชื่อแปลง: {this.state.sitedetail.name}</Text>
       <View style={styles.imageContainer}>
+       
           <View style={styles.titleIconContainer}>
               <Image 
                source= {{uri : "https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png"}}

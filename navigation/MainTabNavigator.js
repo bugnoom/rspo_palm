@@ -94,7 +94,7 @@ const DetailMenuStack = createStackNavigator({
   FormInput5:{
     screen: FormInput5
   },
-  FormInput_AddEdit:{
+  FormInput5_AddEdit:{
     screen: FormInput5_AddEdit
   },
   FormInput6:{

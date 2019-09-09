@@ -1,147 +1,8 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, ScrollView, Button, TextInput, Label } from 'react-native'
+import { Text, StyleSheet, View, ScrollView,ListView, ListItem,AsyncStorage, TextInput} from 'react-native'
 import { Colors, Fonts } from '../../constants';
 import CustomInputText from '../../components/CustomInputText';
-import { createStore, combineReducers } from 'redux';
-
-
-const list = [
-  {
-    name: 'รหัสแปลง',
-    id : 'code',
-    value: '001',
-    selectedvalue:'',
-    readonly: true,
-    type: 'text'
-  },{
-    name: 'รหัส RSPO',
-    id : 'rspocode',
-    value: '001',
-    selectedvalue:'',
-    readonly: true,
-    type: 'text'
-  },{
-    name: 'ชื่อแปลงปลูก',
-    id : 'name',
-    value: 'สวนปาล์ม หลังบ้าน',
-    selectedvalue:'',
-    readonly: false,
-    type: 'text'
-  },{
-    name: 'วันที่เข้าร่วมโครงการ',
-    id : 'datein',
-    value: '02/10/2561',
-    selectedvalue:'02/10/2561',
-    readonly: false,
-    type: 'datetime'
-  },{
-    name: 'ชื่อแปลงปลูก',
-    id : 'name',
-    value: 'สวนปาล์ม หลังบ้าน',
-    selectedvalue:'',
-    readonly: false,
-    type: 'text'
-  },{
-    name: 'ประเภท',
-    id : 'type',
-    value: 'โฉนด',
-    selectlist:[{id:'1', value:'โฉนด'},{id:'2', value:'นส3. ก'}],
-    selectedvalue:'1',
-    readonly: false,
-    type: 'selectbox' //picker
-  },{
-    name: 'ที่อยู่',
-    id : 'address',
-    value: 'กระบี่',
-    selectedvalue:'',
-    readonly: false,
-    type: 'text'
-  },{
-    name: 'ปีที่ปลูก',
-    id : 'yearin',
-    value: '2535',
-    selectedvalue:'',
-    readonly: false,
-    type: 'text'
-  },{
-    name: 'พื้นที่ปลูก(ไร่)',
-    id : 'area',
-    value: '30',
-    selectedvalue:'',
-    readonly: false,
-    type: 'text'
-  },{
-    name: 'จำนวนต้น',
-    id : 'num',
-    value: '340',
-    selectedvalue:'',
-    readonly: false,
-    type: 'text'
-  },{
-    name: 'จำนวนต้นตาย',
-    id: 'dead',
-    value: '0',
-    selectedvalue: '',
-    readonly: false,
-    type: 'text'
-  },{
-    name: 'จำนวนต้นปลูกทดแทน',
-    id: 'growback',
-    value: '0',
-    selectedvalue: '',
-    readonly: false,
-    type: 'text'
-  },{
-    name: "ปีที่ปลูกทดแทน (พ.ศ.)",
-    id: 'yeargrow',
-    value: '2540',
-    selectedvalue: '',
-    readonly: false,
-    type: 'text'
-  },{
-    name: 'วิธีปลูกต้นแทน',
-    id: 'solutiongrow',
-    value: '1',
-    selectedvalue: '1',
-    selectlist: [{}],
-    readonly: false,
-    type: "text"
-  },{
-    name: 'สาเหตุการตาย',
-    id: 'reasondead',
-    value: 'aaa',
-    selectedvalue: '',
-    readonly: false,
-    type: 'text'
-  },{
-    name:'พื้นที่ปลูกพืชอื่นๆในแปลงเช่น ยางพารา ผลไม้ เป็นต้น',
-    placeholder: 'มีรายละเอียดดังต่อไปนี้ (ระบุจำนวนไร่ของการใช้ประโยชน์)',
-    hasPic:[],
-    id : 'detailarea',
-    value: '',
-    selectedvalue: '',
-    readonly: false,
-    type: 'textarea'
-  },{
-    name: 'พื่นที่ที่ใช้ประโยชน์อื่นๆ เช่น สระน้ำ บ้านพักอาศัย เป็นต้น จำนวน',
-    placeholder: '',
-    id: 'benefitother',
-    value: '',
-    selectedvalue: '',
-    readonly: false,
-    type: 'textarea'
-  },{
-    name: 'พื้นที่ที่มีคุณค่าเชิงอนุรักษ์ในสวนปาล์มเช่น แม่น้ำสำคัญขนาดใหญ่ อ่างเก็บน้ำ เป็นต้น',
-    placeholder: '',
-    id: 'conserve',
-    value: '',
-    selectedvalue: '',
-    readonly: false,
-    type: 'textarea'
-  }
-]
-
-initStateData = list;
+import { getSiteInfo } from '../../services/DataService';
 
 
 /*
@@ -182,45 +43,202 @@ export default class FormInput1 extends React.Component {
     super(props);
     const { navigation } = this.props
     const pagename = JSON.parse(navigation.getParam('data', ''));
+    console.log('data pagename', pagename)
     this.props.navigation.setParams({sitename: pagename[0]});
+    this.state = {
+      sitedetail: '',
+      datadetail:'',
+      field:{
+        id: "",
+        name:"",
+        code : "",
+        rspocode: "",
+        address:"",
+        type:"",
+        yearin: "",
+        area: "",
+        num: "",
+        dead: "",
+        growback: "",
+        yeargrow: "",
+        solutiongrow: "",
+        reasondead: "",
+        detailarea: "",
+        benefitother: "",
+        conserve: ""
+      }
+    }
+    this.getdetail();
   }
 
-  componentWillMount(){
-    this.getdata();
+  // componentWillMount(){
+  //   this.getdata();
+  // }
+  getdetail(){
+    AsyncStorage.getItem('siteID',(err, result) => {
+      let data = JSON.parse(result);
+      console.log('storage data is : ', data);
+      this.setState({sitedetail: data[0]})
+    });
   }
 
   getdata(){
-    const datalist = list
+   
+    const datalist = [
+      {
+        name: 'รหัสแปลง',
+        id : 'code',
+        value: '001',
+        selectedvalue:'',
+        readonly: true,
+        type: 'text'
+      },{
+        name: 'รหัส RSPO',
+        id : 'rspocode',
+        value: '001',
+        selectedvalue:'',
+        readonly: true,
+        type: 'text'
+      },{
+        name: 'ชื่อแปลงปลูก',
+        id : 'name',
+        value: this.state.sitedetail.name,
+        selectedvalue:'',
+        readonly: false,
+        type: 'text'
+      },{
+        name: 'วันที่เข้าร่วมโครงการ',
+        id : 'datein',
+        value: '02/10/2561',
+        selectedvalue:'02/10/2561',
+        readonly: false,
+        type: 'datetime'
+      },{
+        name: 'ประเภท',
+        id : 'type',
+        value: this.state.sitedetail.type,
+        selectlist:[{id:'1', value:'โฉนด'},{id:'2', value:'นส3. ก'}],
+        selectedvalue:this.state.sitedetail.type,
+        readonly: false,
+        type: 'selectbox' //picker
+      },{
+        name: 'ที่อยู่',
+        id : 'address',
+        value: this.state.sitedetail.address,
+        selectedvalue:'',
+        readonly: false,
+        type: 'text'
+      },{
+        name: 'ปีที่ปลูก',
+        id : 'yearin',
+        value: this.state.sitedetail.yearin,
+        selectedvalue:'',
+        readonly: false,
+        type: 'text'
+      },{
+        name: 'พื้นที่ปลูก(ไร่)',
+        id : 'area',
+        value: this.state.sitedetail.area,
+        selectedvalue:'',
+        readonly: false,
+        type: 'text'
+      },{
+        name: 'จำนวนต้น',
+        id : 'num',
+        value: this.state.sitedetail.num,
+        selectedvalue:'',
+        readonly: false,
+        type: 'text'
+      },{
+        name: 'จำนวนต้นตาย',
+        id: 'dead',
+        value: this.state.sitedetail.dead,
+        selectedvalue: '',
+        readonly: false,
+        type: 'text'
+      },{
+        name: 'จำนวนต้นปลูกทดแทน',
+        id: 'growback',
+        value: this.state.sitedetail.growback,
+        selectedvalue: '',
+        readonly: false,
+        type: 'text'
+      },{
+        name: "ปีที่ปลูกทดแทน (พ.ศ.)",
+        id: 'yeargrow',
+        value: this.state.sitedetail.yeargrow,
+        selectedvalue: '',
+        readonly: false,
+        type: 'text'
+      },{
+        name: 'วิธีปลูกต้นแทน',
+        id: 'solutiongrow',
+        value: this.state.sitedetail.solutiongrow,
+        selectedvalue: this.state.sitedetail.solutiongrow,
+        selectlist: [{}],
+        readonly: false,
+        type: "text"
+      },{
+        name: 'สาเหตุการตาย',
+        id: 'reasondead',
+        value: this.state.sitedetail.reasondead,
+        selectedvalue: '',
+        readonly: false,
+        type: 'text'
+      },{
+        name:'พื้นที่ปลูกพืชอื่นๆในแปลงเช่น ยางพารา ผลไม้ เป็นต้น',
+        placeholder: 'มีรายละเอียดดังต่อไปนี้ (ระบุจำนวนไร่ของการใช้ประโยชน์)',
+        hasPic:[],
+        id : 'detailarea',
+        value: this.state.sitedetail.detailarea,
+        selectedvalue: '',
+        readonly: false,
+        type: 'textarea'
+      },{
+        name: 'พื่นที่ที่ใช้ประโยชน์อื่นๆ เช่น สระน้ำ บ้านพักอาศัย เป็นต้น จำนวน',
+        placeholder: '',
+        id: 'benefitother',
+        value: this.state.sitedetail.benefitother,
+        selectedvalue: '',
+        readonly: false,
+        type: 'textarea'
+      },{
+        name: 'พื้นที่ที่มีคุณค่าเชิงอนุรักษ์ในสวนปาล์มเช่น แม่น้ำสำคัญขนาดใหญ่ อ่างเก็บน้ำ เป็นต้น',
+        placeholder: '',
+        id: 'conserve',
+        value: this.state.sitedetail.conserve,
+        selectedvalue: '',
+        readonly: false,
+        type: 'textarea'
+      }
+    ]
+   
     return datalist;
   }
 
-  reducerdata = (state = initStateData, action) =>{
-    switch(action.type){
-      case "update" : 
-      return Object.assign({},state,{
-        data:state.data.map(item=>{
-          return item.id === action.payload.id ? action.payload: item;
-        })
-      })
-      default: return state
-    }
-  }
-   
+  
   render() {
-    const store = createStore(this.reducerdata, initStateData);
-    console.log(store.getState());
+  //  console.log(store.getState());
     return (
-        <ScrollView ScrollContentStyle={styles.constainer}>
+        <ScrollView ScrollContentStyle={styles.constainer} style={styles.container}>
         <View>
-          <CustomInputText list={store.getState()} getprops={this.props}  ></CustomInputText> 
-         
-        </View>
+           <CustomInputText list={this.getdata()} getprops={this.props}  ></CustomInputText> 
+           {/* <TextInput value = {this.state.sitedetail.name}
+        style={{width:'100%', height:60, borderBottomWidth:1, borderBottomColor:'#cccccc', padding:10}}
+        editable={false}
+        clearButtonMode='always'
+        onChangeText={(value) => this.setState({sitedetail:{name:value}})}
+        autoFocus={true}
+        /> */}
+        
+        
+      </View>
+        
         </ScrollView>
    
     )
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
