@@ -108,7 +108,20 @@ export default class HomeScreen extends React.Component {
       total: 0,
       sitedata: ""
     }
+
+    this.reRenderSomething = this.props.navigation.addListener('willFocus', () => {
+      //Put your code here you want to rerender, in my case i want to rerender the data 
+      //im fetching from firebase and display the changes
+      console.log("open select Home screen")
+      this.siteID();
+      this.getData();
+    });
   }
+
+  componentWillMount(){
+    this.reRenderSomething;
+  }
+ 
 
   getData = () => {
     let sitdata = []
@@ -163,7 +176,7 @@ export default class HomeScreen extends React.Component {
     const data = [];
     data.push(items);
 
-    await AsyncStorage.setItem('siteID', JSON.stringify(data)).then(
+    await AsyncStorage.setItem('siteID', JSON.stringify(data[0].id)).then(
       () => {
         this.props.navigation.navigate('DetailScreen')
       }

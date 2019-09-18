@@ -48,7 +48,7 @@ export default class FormInput11 extends Component {
               date={(type=='start') ? this.state.startselectvalue: this.state.endselectvalue}
               mode="date"
               placeholder="select date"
-              format="DD/MM/YYYY" 
+              format="YYYY-MM-DD" 
               confirmBtnText="Confirm"
               cancelBtnText="Cancel"
               customStyles={{

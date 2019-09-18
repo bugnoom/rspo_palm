@@ -49,24 +49,25 @@ export const getSiteInfo = async (SiteID) => {
 
 export const updateSiteDetail = async(siteData) =>{
     const body = JSON.stringify({
-        "id":siteData['id'],
+        "id":siteData.id,
         "state":1,
-        "name": siteData['name'],
-        "code": siteData['code'],
-        "rspocode":siteData['rspocode'],
-        "address": siteData['address'], 
-        "type":siteData['type'],
-        "yearin":siteData['yearin'], 
-        "area":siteData['area'], 
-        "num":siteData['num'], 
-        "dead":siteData['dead'], 
-        "growback":siteData['growback'], 
-        "yeargrow":siteData['yeargrow'], 
-        "solutiongrow":siteData['solutiongrow'], 
-        "reasondead":siteData['reasondead'], 
-        "detailarea":siteData['detailarea'], 
-        "benefitother":siteData['benefitother'], 
-        "conserve":siteData['conserve'], 
+        "name": siteData.name,
+        "code": siteData.code,
+        "rspocode":siteData.rspocode,
+        "address": siteData.address, 
+        "type":siteData.type,
+        "yearin":siteData.yearin, 
+        "area":siteData.area, 
+        "num":siteData.num, 
+        "dead":siteData.dead, 
+        "growback":siteData.growback, 
+        "yeargrow":siteData.yeargrow, 
+        "solutiongrow":siteData.solutiongrow, 
+        "reasondead":siteData.reasondead, 
+        "detailarea":siteData.detailarea, 
+        "benefitother":siteData.benefitother, 
+        "conserve":siteData.conserve, 
+        "datein":siteData.datein
     });
 
     const res = await fetch(APIURL + '/info/update.php',{
@@ -79,24 +80,24 @@ export const updateSiteDetail = async(siteData) =>{
 
 export const updateBasicInfomation = async(basicData) =>{
     const body = JSON.stringify({
-         "id": basicData['id'],
+         "id": basicData.id,
          "state" : 2,
-         "statesoil": basicData['statesoil'],
-         "typearea" : basicData['typearea'],
-         "typeareamark": basicData['typeareamark'],
-         "typesoil": basicData['typeoil'],
-         "typesoilother": basicData['typesoilother'],
-         "plantingarea": basicData['plantingarea'],
-         "plantingareaother": basicData['plantingareaother'],
-         "soilconservation": basicData['soilconservation'],
-         "soilconservationother": basicData['soilconservationother'],
-         "wateringmethod": basicData['wateringmethod'],
-         "sourcewater": basicData['sourcewater'],
-         "usebefore": basicData['usebefore'],
-         "pattern": basicData['pattern'],
-         "phase": basicData['phase'],
-         "harvesting": basicData['harvesting'],
-         "harvestingother": basicData['harvestingother']
+         "statesoil": basicData.statesoil,
+         "typearea" : basicData.typearea,
+         "typeareamark": basicData.typeareamark,
+         "typesoil": basicData.typeoil,
+         "typesoilother": basicData.typesoilother,
+         "plantingarea": basicData.plantingarea,
+         "plantingareaother": basicData.plantingareaother,
+         "soilconservation": basicData.soilconservation,
+         "soilconservationother": basicData.soilconservationother,
+         "wateringmethod": basicData.wateringmethod,
+         "sourcewater": basicData.sourcewater,
+         "usebefore": basicData.usebefore,
+         "pattern": basicData.pattern,
+         "phase": basicData.phase,
+         "harvesting": basicData.harvesting,
+         "harvestingother": basicData.harvestingother
     })
     const res = await fetch(APIURL + '/info/update.php',{
         method: 'POST',
@@ -108,14 +109,14 @@ export const updateBasicInfomation = async(basicData) =>{
 
 export const updatePlamspaceInfo = async(spaceinfo)=>{
     const body = JSON.stringify({
-        "id": spaceinfo['id'],
+        "id": spaceinfo.id,
         "state": 3,
-        "originsoil": spaceinfo['originsoil'],
-        "originsoilother": spaceinfo['originsoilother'],
-        "kindsoil": spaceinfo['kindsoil'],
-        "kindsoilcompany": spaceinfo['kindsoilcompany'],
-        "choosesoil": spaceinfo['choosesoil'],
-        "oldsoil": spaceinfo['oldsoil']
+        "originsoil": spaceinfo.originsoil,
+        "originsoilother": spaceinfo.originsoilother,
+        "kindsoil": spaceinfo.kindsoil,
+        "kindsoilcompany": spaceinfo.kindsoilcompany,
+        "choosesoil": spaceinfo.choosesoil,
+        "oldsoil": spaceinfo.oldsoil
     })
     const res = await fetch(APIURL + '/info/update.php',{
         method: 'POST',
@@ -139,15 +140,15 @@ export const getProductInfoList = async(plam_id) =>{
 
 export const createProductInfo = async(product) =>{
     const body = JSON.stringify({
-        "palm": product['plam_id'],
-        "datein": product['datein'],
-        "billnumber": product['billnumber'],
-        "numerative": product['numerative'],
-        "numerativeprice": product['numerativeprice'],
-        "seedfail": product['seedfail'],
-        "seedfailprice": product['seedfailprice'],
-        "earnings": product['earnings'],
-        "earningsseedfail": product['earningsseedfail']
+        "palm": product.plam_id,
+        "datein": product.datein,
+        "billnumber": product.billnumber,
+        "numerative": product.numerative,
+        "numerativeprice": product.numerativeprice,
+        "seedfail": product.seedfail,
+        "seedfailprice": product.seedfailprice,
+        "earnings": product.earnings,
+        "earningsseedfail": product.earningsseedfail
     })
     const res = await fetch(APIURL + '/yield/create.php',{
         method: 'POST',

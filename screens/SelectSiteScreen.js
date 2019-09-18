@@ -12,9 +12,20 @@ export default class SelectSiteScreen extends Component {
         this.state ={
           sitedata: ""
         }
-
-        this.getData()
+        this.reRenderSomething = this.props.navigation.addListener('willFocus', () => {
+          //Put your code here you want to rerender, in my case i want to rerender the data 
+          //im fetching from firebase and display the changes
+          console.log("open select site screen")
+          this.getData()
+        });
         
+      
+        
+    }
+
+    componentWillMount(){
+     
+      this.reRenderSomething;
     }
 
     // static navigationOptions = {
@@ -24,12 +35,11 @@ export default class SelectSiteScreen extends Component {
     //     headerRight :  <LogoutButton page="signout" />
     //   };
 
-   
+    
     SelectSite = async(items) => {
         const data = [];
         data.push(items);
-    
-        await AsyncStorage.setItem('siteID', JSON.stringify(data)).then(
+        await AsyncStorage.setItem('siteID', JSON.stringify(items.id)).then(
             () => {
                 this.props.navigation.navigate('DetailScreen')
             }

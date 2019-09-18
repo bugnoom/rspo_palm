@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TouchableOpacity, TextInput, Picker} from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, TextInput, Picker,AsyncStorage} from 'react-native'
 import { Colors}  from '../constants'
 import  DatePicker  from 'react-native-datepicker'
+import { updateSiteDetail } from '../services/DataService'
+import Moment from 'moment';
+
 
 export default class EditDataForm extends React.Component {
 
@@ -11,7 +14,9 @@ export default class EditDataForm extends React.Component {
       data : this.props.navigation.getParam('data'),
       value : this.props.navigation.getParam('data').value,
       selectvalue : this.props.navigation.getParam('data').selectedvalue,
-      form : this.props.navigation.getParam('form')
+      form : this.props.navigation.getParam('form'),
+      field : this.props.navigation.getParam('field').id,
+      fromstate : this.props.navigation.getParam('field').fromstate
     }
   }
 
@@ -19,7 +24,7 @@ export default class EditDataForm extends React.Component {
   static navigationOptions = ({navigation}) => {
     const { params = {} } = navigation.state;
     return{
-      headerTitle: navigation.getParam('field',''),
+      headerTitle: navigation.getParam('field','').name,
       headerLeft: <TouchableOpacity  onPress={ () => { navigation.goBack() }}><Text style={styles.buttonCancel}>Cancel</Text></TouchableOpacity>,
       headerRight: <TouchableOpacity  onPress={() => params.handleUpdate()}><Text style={styles.buttonSave}>Save</Text></TouchableOpacity>
     }
@@ -32,10 +37,102 @@ export default class EditDataForm extends React.Component {
 
   update = () => {
     var formname = this.state.form;
-    console.log("Update click now!!", this.state.selectvalue)
-    alert('update success ' + formname);
-   
+    console.log("Update click now!!", this.state.fromstate)
+   switch(this.state.fromstate){
+     case "1":
+       let siteDataPayload={
+        "id":formname.id,
+        "state":1,
+        "name": (this.state.field == "name"? this.state.value: formname.name),
+        "code": (this.state.field == "code"? this.state.value: formname.code),
+        "rspocode":(this.state.field == "rspocode"? this.state.value: formname.rspocode),
+        "address": (this.state.field == "address"? this.state.value: formname.address), 
+        "type":(this.state.field == "type"? this.state.value: formname.type),
+        "yearin":(this.state.field == "yearin"? this.state.value: formname.yearin), 
+        "area":(this.state.field == "area"? this.state.value: formname.area), 
+        "num":(this.state.field == "num"? this.state.value: formname.num), 
+        "dead":(this.state.field == "dead"? this.state.value: formname.dead), 
+        "growback":(this.state.field == "growback"? this.state.value: formname.growback), 
+        "yeargrow":(this.state.field == "yeargrow"? this.state.value: formname.yeargrow), 
+        "solutiongrow":(this.state.field == "solutiongrow"? this.state.value: formname.solutiongrow), 
+        "reasondead":(this.state.field == "reasondead"? this.state.value: formname.reasondead), 
+        "detailarea":(this.state.field == "detailarea"? this.state.value: formname.detailarea), 
+        "benefitother":(this.state.field == "benefitother"? this.state.value: formname.detailarea), 
+        "conserve":(this.state.field == "conserve"? this.state.value: formname.conserve), 
+        "datein": (this.state.field == "datein" ? this.convertdate(this.state.selectvalue): this.convertdate(formname.datein))
+       }
+      updateSiteDetail(siteDataPayload).then(
+        (result) => {
+          this.successdata(formname);
+        }
+      );
+      
+      break;
+     case "2":
+       let dataPayload={
+        "id": formname.id,
+        "state" : 2,
+        "statesoil": (this.state.field == "statesoil" ? this.state.value: formname.statesoil),
+        "typearea" : (this.state.field == "typearea" ? this.state.value: formname.typearea),
+        "typeareamark": (this.state.field == "typeareamark" ? this.state.value: formname.typeareamark),
+        "typesoil": (this.state.field == "typesoil" ? this.state.value: formname.typeoil),
+        "typesoilother": (this.state.field == "typesoilother" ? this.state.value: formname.typesoilother),
+        "plantingarea": (this.state.field == "plantingarea" ? this.state.value: formname.plantingarea),
+        "plantingareaother": (this.state.field == "plantingareaother"? this.state.value: formname.plantingareaother),
+        "soilconservation": (this.state.field == "soilconservation" ? this.state.value: formname.soilconservation),
+        "soilconservationother": (this.state.field == "soilconservationother" ? this.state.value: formname.soilconservationother),
+        "wateringmethod": (this.state.field == "wateringmethod" ? this.state.value: formname.wateringmethod),
+        "sourcewater": (this.state.field == "sourcewater" ? this.state.value: formname.sourcewater),
+        "usebefore": (this.state.field == "usebefore" ? this.state.value: formname.usebefore),
+        "pattern": (this.state.field == "pattern" ? this.state.value: formname.pattern),
+        "phase": (this.state.field == "phase" ? this.state.value: formname.phase),
+        "harvesting": (this.state.field == "harvesting" ? this.state.value: formname.harvesting),
+        "harvestingother": (this.state.field == "harvestingother" ? this.state.value: formname.harvestingother)
+       }
+       updateBasicInfomation(dataPayload).then(
+         (result) => {
+            this.successdata(formname);
+         }
+       )
+       break;
+     case "3":
+       let dataPayload={
+        "id": formname.id,
+        "state": 3,
+        "originsoil": (this.state.field == "originsoil" ? this.state.value : formname.originsoil),
+        "originsoilother": (this.state.field == "originsoilother" ? this.state.value : formname.originsoilother),
+        "kindsoil": (this.state.field == "kindsoil" ? this.state.value : formname.kindsoil),
+        "kindsoilcompany": (this.state.field == "kindsoilcompany" ? this.state.value : formname.kindsoilcompany),
+        "choosesoil": (this.state.field == "choosesoil" ? this.state.value : formname.choosesoil),
+        "oldsoil": (this.state.field == "oldsoil" ? this.state.value : formname.oldsoil)
+       }
+       updatePlamspaceInfo(dataPayload).then(
+         (result) => {
+           this.successdata(formname);
+         }
+       )
+       break;
+   }
    // this.props.navigation.navigate(formname, {valuedata:this.state})
+  }
+
+  convertdate(date){
+    //Moment.locale('th');
+    let a = date.split('-');
+    let y = parseInt(a[0]) + 543;
+    //let d = y + "/" + a[1] + "/" + a[2];
+    let d = a[2] + "/" + a[1] + "/" + y;
+    console.log(d);
+    return d;
+    //"01/05/2560"
+    
+  }
+
+  successdata(formname){
+    console.log("formis", formname);
+        //alert('update success');
+        this.props.navigation.goBack()
+      
   }
 
   textinput(data){
@@ -74,7 +171,7 @@ export default class EditDataForm extends React.Component {
             date={this.state.selectvalue}
             mode="date"
             placeholder="select date"
-            format="DD/MM/YYYY" 
+            format="YYYY-MM-DD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             customStyles={{

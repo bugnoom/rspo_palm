@@ -65,37 +65,49 @@ export default class FormInput1 extends React.Component {
         reasondead: "",
         detailarea: "",
         benefitother: "",
-        conserve: ""
+        conserve: "",
+        datein:""
       }
     }
-    this.getdetail();
+    this.reRenderSomething = this.props.navigation.addListener('willFocus', () => {
+      //Put your code here you want to rerender, in my case i want to rerender the data 
+      //im fetching from firebase and display the changes
+      console.log("open form1 screen")
+      this.getdetail();
+    });
+   // this.getdetail();
   }
 
-  // componentWillMount(){
-  //   this.getdata();
-  // }
-  getdetail(){
+  componentWillMount(){
+    this.reRenderSomething;
+  }
+
+  
+
+  getdetail(){ // get info data
     AsyncStorage.getItem('siteID',(err, result) => {
-      let data = JSON.parse(result);
-      console.log('storage data is : ', data);
-      this.setState({sitedetail: data[0]})
+      let datasiteid = JSON.parse(result);
+      console.log('storage data is : ', datasiteid);
+      getSiteInfo(datasiteid).then((data) =>{
+        this.setState({sitedetail: data.data})
+       //console.log('info data', data.data);
+      });
     });
   }
 
   getdata(){
-   
     const datalist = [
       {
         name: 'รหัสแปลง',
         id : 'code',
-        value: '001',
+        value: this.state.sitedetail.code,
         selectedvalue:'',
         readonly: true,
         type: 'text'
       },{
         name: 'รหัส RSPO',
         id : 'rspocode',
-        value: '001',
+        value: this.state.sitedetail.rspocode,
         selectedvalue:'',
         readonly: true,
         type: 'text'
@@ -109,8 +121,8 @@ export default class FormInput1 extends React.Component {
       },{
         name: 'วันที่เข้าร่วมโครงการ',
         id : 'datein',
-        value: '02/10/2561',
-        selectedvalue:'02/10/2561',
+        value: this.state.sitedetail.datein,
+        selectedvalue:this.state.sitedetail.datein,
         readonly: false,
         type: 'datetime'
       },{
@@ -222,7 +234,7 @@ export default class FormInput1 extends React.Component {
     return (
         <ScrollView ScrollContentStyle={styles.constainer} style={styles.container}>
         <View>
-           <CustomInputText list={this.getdata()} getprops={this.props}  ></CustomInputText> 
+           <CustomInputText list={this.getdata()} getprops={this.props} isdata={this.state.sitedetail} fromstate="1" ></CustomInputText> 
            {/* <TextInput value = {this.state.sitedetail.name}
         style={{width:'100%', height:60, borderBottomWidth:1, borderBottomColor:'#cccccc', padding:10}}
         editable={false}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform, ScrollView, StyleSheet, View, TouchableOpacity, Image, Text, FlatList, AsyncStorage } from 'react-native';
 import { Colors, Fonts } from '../constants';
 import { Icon } from 'expo';
+import { getSiteInfo } from '../services/DataService';
 
 const jsonmenulist = require('../assets/menu.json');
 
@@ -19,17 +20,37 @@ export default class DetailMenuScreen extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      sitedetail:''
+      sitedetail:'',
+      siteid:''
     }
-    this.getdetail();
+    this.reRenderSomething = this.props.navigation.addListener('willFocus', () => {
+      //Put your code here you want to rerender, in my case i want to rerender the data 
+      //im fetching from firebase and display the changes
+      console.log("open detail menu screen");
+      this.getdetail();
+    });
+    
   }
 
-  getdetail(){
+  getdetail(){ // get deata from siteID
     AsyncStorage.getItem('siteID',(err, result) => {
-      let data = JSON.parse(result);
-      console.log('storage data is : ', data);
-      this.setState({sitedetail: data[0]})
+      let siteid = JSON.parse(result);
+      console.log('storage data is : ', siteid);
+      this.setState({siteid: siteid})
+      getSiteInfo(siteid).then((data) =>{
+        
+        this.setState({sitedetail: data.data})
+       //console.log('info data', data.data);
+      });
     });
+
+   
+
+  }
+
+  componentWillMount(){
+   this.reRenderSomething;
+    
   }
 
   render() {

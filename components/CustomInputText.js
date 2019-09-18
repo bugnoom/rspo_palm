@@ -25,7 +25,7 @@ export default class CustomInputText extends Component {
 
   renderItem = ({ item}) => {   
       return( 
-        <TouchableOpacity onPress={() => this.openmodal(item,this.state.formname)} style={styles.item}>        
+        <TouchableOpacity onPress={() => this.openmodal(item,this.props.isdata)} style={styles.item}>        
           <ListItem
             style={styles.ls}
             title={<Text style={styles.title}>{item.name}</Text>}
@@ -39,13 +39,11 @@ export default class CustomInputText extends Component {
   }
 
   render() {
-    return (
-     
+    return (     
       <FlatList
         keyExtractor={this.keyExtractor}
         data={this.props.list}
-        renderItem={this.renderItem}
-        
+        renderItem={this.renderItem}       
       />
     );
   }
@@ -54,7 +52,7 @@ export default class CustomInputText extends Component {
   openmodal(item,formname) {
     console.log('formname is : '+ formname);
     if (!item.readonly) {
-      this.props.getprops.navigation.navigate('EditDataForm',{data:item, field:item.name, form:formname})
+      this.props.getprops.navigation.navigate('EditDataForm',{data:item, field:{'name':item.name,'id':item.id,'fromstate':this.props.fromstate}, form:formname})
     } else {
       return;
     }
