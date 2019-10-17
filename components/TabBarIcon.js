@@ -1,5 +1,6 @@
 import React from 'react';
-import { Icon } from 'expo';
+//import { Ionicons } from '';
+import * as Icon from '@expo/vector-icons'
 
 import Colors from '../constants/Colors';
 

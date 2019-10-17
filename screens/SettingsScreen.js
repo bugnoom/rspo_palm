@@ -2,7 +2,7 @@ import React from 'react';
 //import { ExpoConfigView } from '@expo/samples';
 import { LogoutButton } from '../components/LogoutButton';
 import { Platform, Text,ScrollView, View, Button, AsyncStorage, StyleSheet, TouchableOpacity} from 'react-native';
-import { Icon } from 'expo';
+import * as Icon from '@expo/vector-icons'
 import { Colors, Fonts } from '../constants';
 
 

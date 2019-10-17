@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, TouchableOpacity, TextInput, Picker,AsyncStorage} from 'react-native'
+import { Text, StyleSheet, View, TouchableOpacity, TextInput, Picker, ActivityIndicator} from 'react-native'
 import { Colors}  from '../constants'
 import  DatePicker  from 'react-native-datepicker'
-import { updateSiteDetail } from '../services/DataService'
+import { updateSiteDetail,updateBasicInfomation,updatePlamspaceInfo } from '../services/DataService'
 import Moment from 'moment';
 
 
@@ -16,7 +16,8 @@ export default class EditDataForm extends React.Component {
       selectvalue : this.props.navigation.getParam('data').selectedvalue,
       form : this.props.navigation.getParam('form'),
       field : this.props.navigation.getParam('field').id,
-      fromstate : this.props.navigation.getParam('field').fromstate
+      fromstate : this.props.navigation.getParam('field').fromstate,
+      isLoading: false
     }
   }
 
@@ -37,6 +38,7 @@ export default class EditDataForm extends React.Component {
 
   update = () => {
     var formname = this.state.form;
+    this.setState({isLoading: true})
     console.log("Update click now!!", this.state.fromstate)
    switch(this.state.fromstate){
      case "1":
@@ -69,7 +71,7 @@ export default class EditDataForm extends React.Component {
       
       break;
      case "2":
-       let dataPayload={
+       let basicdataPayload={
         "id": formname.id,
         "state" : 2,
         "statesoil": (this.state.field == "statesoil" ? this.state.value: formname.statesoil),
@@ -89,14 +91,14 @@ export default class EditDataForm extends React.Component {
         "harvesting": (this.state.field == "harvesting" ? this.state.value: formname.harvesting),
         "harvestingother": (this.state.field == "harvestingother" ? this.state.value: formname.harvestingother)
        }
-       updateBasicInfomation(dataPayload).then(
+       updateBasicInfomation(basicdataPayload).then(
          (result) => {
             this.successdata(formname);
          }
        )
        break;
      case "3":
-       let dataPayload={
+       let plamsdataPayload={
         "id": formname.id,
         "state": 3,
         "originsoil": (this.state.field == "originsoil" ? this.state.value : formname.originsoil),
@@ -106,7 +108,7 @@ export default class EditDataForm extends React.Component {
         "choosesoil": (this.state.field == "choosesoil" ? this.state.value : formname.choosesoil),
         "oldsoil": (this.state.field == "oldsoil" ? this.state.value : formname.oldsoil)
        }
-       updatePlamspaceInfo(dataPayload).then(
+       updatePlamspaceInfo(plamsdataPayload).then(
          (result) => {
            this.successdata(formname);
          }
@@ -129,6 +131,7 @@ export default class EditDataForm extends React.Component {
   }
 
   successdata(formname){
+    this.setState({isLoading: false})
     console.log("formis", formname);
         //alert('update success');
         this.props.navigation.goBack()
@@ -222,9 +225,14 @@ export default class EditDataForm extends React.Component {
   render() {
     console.log()
     return (
+      
       <View style={styles.container}>
         {this.textinput(this.state.data)}
+        {
+            this.state.isLoading ?  <View style={styles.activityContainer}><ActivityIndicator size="large" color="#00ff00" animating={true}/></View> : null
+          }
       </View>
+      
     )
   }
 }
@@ -233,6 +241,18 @@ export default class EditDataForm extends React.Component {
 
 
 const styles = StyleSheet.create({
+  activityContainer:{
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: 0.5,
+    backgroundColor: 'black',
+           
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

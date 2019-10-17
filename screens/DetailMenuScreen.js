@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform, ScrollView, StyleSheet, View, TouchableOpacity, Image, Text, FlatList, AsyncStorage } from 'react-native';
 import { Colors, Fonts } from '../constants';
-import { Icon } from 'expo';
+import * as Icon from '@expo/vector-icons'
 import { getSiteInfo } from '../services/DataService';
 
 const jsonmenulist = require('../assets/menu.json');

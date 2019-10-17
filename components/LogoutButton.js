@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Platform, Text, View, Button, AsyncStorage, StyleSheet, TouchableOpacity} from 'react-native'
-import { Icon } from 'expo';
+import * as Icon from '@expo/vector-icons'
 import { Colors, Fonts } from '../constants';
 
 export default class LogoutButton extends React.Component{
