@@ -77,7 +77,7 @@ export default class EditDataForm extends React.Component {
         "statesoil": (this.state.field == "statesoil" ? this.state.value: formname.statesoil),
         "typearea" : (this.state.field == "typearea" ? this.state.value: formname.typearea),
         "typeareamark": (this.state.field == "typeareamark" ? this.state.value: formname.typeareamark),
-        "typesoil": (this.state.field == "typesoil" ? this.state.value: formname.typeoil),
+        "typesoil": (this.state.field == "typesoil" ? this.state.value: formname.typesoil),
         "typesoilother": (this.state.field == "typesoilother" ? this.state.value: formname.typesoilother),
         "plantingarea": (this.state.field == "plantingarea" ? this.state.value: formname.plantingarea),
         "plantingareaother": (this.state.field == "plantingareaother"? this.state.value: formname.plantingareaother),
@@ -92,7 +92,7 @@ export default class EditDataForm extends React.Component {
         "harvestingother": (this.state.field == "harvestingother" ? this.state.value: formname.harvestingother)
        }
        updateBasicInfomation(basicdataPayload).then(
-         (result) => {
+         (result) => { console.log("upate 2 is", basicdataPayload)
             this.successdata(formname);
          }
        )
@@ -168,29 +168,30 @@ export default class EditDataForm extends React.Component {
       )
       
       case "datetime":
-      return(
-        <DatePicker
-            style={{width: '90%', marginTop:10 }}
-            date={this.state.selectvalue}
-            mode="date"
-            placeholder="select date"
-            format="YYYY-MM-DD"
-            confirmBtnText="Confirm"
-            cancelBtnText="Cancel"
-            customStyles={{
-              dateIcon: {
-                position: 'absolute',
-                left: 0,
-                top: 4,
-                marginLeft: 0
-              },
-              dateInput: {
-                marginLeft: 36
-              }
-            }}
-            onDateChange={(date) => {this.setState({selectvalue: date})}}
-        />
-      )
+        return(
+          <DatePicker
+              style={{width: '90%', marginTop:10 }}
+              date={(this.state.selectvalue == '0000-00-00')? '2019-01-01' : this.state.selectvalue}
+              mode="date"
+              placeholder="select date"
+              format="YYYY-MM-DD"
+              confirmBtnText="Confirm"
+              cancelBtnText="Cancel"
+              customStyles={{
+                dateIcon: {
+                  position: 'absolute',
+                  left: 0,
+                  top: 4,
+                  marginLeft: 0
+                },
+                dateInput: {
+                  marginLeft: 36
+                }
+              }}
+              onDateChange={(date) => {this.setState({selectvalue: date})}}
+          />
+        )
+      
       
       case "textarea":
           return(

@@ -23,7 +23,7 @@ export default class CustomInputText extends Component {
 
   keyExtractor = (item, index) => index.toString();
 
-  renderItem = ({ item}) => {   
+  renderItem = ({item}) => {   
       return( 
         <TouchableOpacity onPress={() => this.openmodal(item,this.props.isdata)} style={styles.item}>        
           <ListItem

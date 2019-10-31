@@ -62,27 +62,27 @@ export default class FormInput5_AddEdit extends Component {
         </View>
         <View>
           <Text style={styles.textinputTitle}>ยี่ห้อปุ๋ย</Text>
-          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' autoFocus={true}/> 
+          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' /> 
         </View>
         <View>
           <Text style={styles.textinputTitle}>อัตราที่ใช้(กิโลกรัม/ตัน)</Text>
-          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' autoFocus={true}/> 
+          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' keyboardType='numeric' /> 
         </View>
         <View>
           <Text style={styles.textinputTitle}>ราคา/กิโลกรัม(บาท)</Text>
-          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' autoFocus={true}/> 
+          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' keyboardType='numeric' /> 
         </View>
         <View>
           <Text style={styles.textinputTitle}>ค่าปุ๋ย</Text>
-          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' autoFocus={true}/> 
+          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' keyboardType='numeric' /> 
         </View>
         <View>
           <Text style={styles.textinputTitle}>ค่าจ้างใส่ปุ๋ย</Text>
-          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' autoFocus={true}/> 
+          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' keyboardType='numeric' /> 
         </View>
         <View>
           <Text style={styles.textinputTitle}>หมายเหตุ</Text>
-          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' autoFocus={true}/> 
+          <TextInput style={styles.textinput} editable={true} clearButtonMode='always' /> 
         </View>
         <View style={{marginTop:20}}>
         <TouchableOpacity onPress={()=>alert('Save Success')} style={styles.item}>

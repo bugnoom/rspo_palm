@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, StyleSheet, View, ScrollView,ListView, ListItem,AsyncStorage, TextInput} from 'react-native'
 import { Colors, Fonts } from '../../constants';
 import CustomInputText from '../../components/CustomInputText';
-import { getSiteInfo } from '../../services/DataService';
+import { getSiteInfo ,selectboxData} from '../../services/DataService';
 
 
 /*
@@ -48,26 +48,6 @@ export default class FormInput1 extends React.Component {
     this.state = {
       sitedetail: '',
       datadetail:'',
-      field:{
-        id: "",
-        name:"",
-        code : "",
-        rspocode: "",
-        address:"",
-        type:"",
-        yearin: "",
-        area: "",
-        num: "",
-        dead: "",
-        growback: "",
-        yeargrow: "",
-        solutiongrow: "",
-        reasondead: "",
-        detailarea: "",
-        benefitother: "",
-        conserve: "",
-        datein:""
-      }
     }
     this.reRenderSomething = this.props.navigation.addListener('willFocus', () => {
       //Put your code here you want to rerender, in my case i want to rerender the data 
@@ -128,7 +108,7 @@ export default class FormInput1 extends React.Component {
       },{
         name: 'ประเภท',
         id : 'type',
-        value: this.state.sitedetail.type,
+        value: selectboxData.type[this.state.sitedetail.type],
         selectlist:[{id:'1', value:'โฉนด'},{id:'2', value:'นส3. ก'}],
         selectedvalue:this.state.sitedetail.type,
         readonly: false,
@@ -235,15 +215,6 @@ export default class FormInput1 extends React.Component {
         <ScrollView ScrollContentStyle={styles.constainer} style={styles.container}>
         <View>
            <CustomInputText list={this.getdata()} getprops={this.props} isdata={this.state.sitedetail} fromstate="1" ></CustomInputText> 
-           {/* <TextInput value = {this.state.sitedetail.name}
-        style={{width:'100%', height:60, borderBottomWidth:1, borderBottomColor:'#cccccc', padding:10}}
-        editable={false}
-        clearButtonMode='always'
-        onChangeText={(value) => this.setState({sitedetail:{name:value}})}
-        autoFocus={true}
-        /> */}
-        
-        
       </View>
         
         </ScrollView>

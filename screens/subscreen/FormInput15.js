@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity, Picker  } from 'react-native'
+import { Text, StyleSheet, View, ScrollView, TouchableOpacity, Picker, AsyncStorage, ActivityIndicator, Alert  } from 'react-native'
 import { Table, TableWrapper, Row, Cell, Rows, Col } from 'react-native-table-component';
 import { Colors}  from '../../constants'
 import DatePicker from 'react-native-datepicker';
 import { Icon } from 'react-native-elements';
+import { getExpenseList, selectboxData, APIURL, header } from '../../services/DataService';
 
 
 export default class FormInput15 extends Component {
@@ -20,13 +21,57 @@ export default class FormInput15 extends Component {
     super(props);
     const { navigation } = this.props
     const pagename = JSON.parse(navigation.getParam('data', ''));
+    const startdate = new Date();
+    const enddate = new Date();
+
     this.props.navigation.setParams({sitename: pagename[0]});
     this.state = {
-      startselectvalue: new Date(),
-      endselectvalue: new Date(),
+        startselectvalue: startdate.getDate()  + "/" + (startdate.getMonth()) + "/" + startdate.getFullYear(),
+      endselectvalue:  enddate.getDate() + "/" + (enddate.getMonth()+1) + "/" + enddate.getFullYear(),
       tableHead: ['#','วันที่', 'ประเภท','ราคา'],
-      widthArr: [40, 100, 200,100 ]
+      widthArr: [40, 100, 200,100 ],
+      sitedetail:[],
+      isLoading: false
     }
+    this.reRenderSomething = this.props.navigation.addListener('willFocus', () => {
+      //Put your code here you want to rerender, in my case i want to rerender the data 
+      //im fetching from firebase and display the changes
+      console.log("open form4 screen")
+      this.loadDatalist();
+    });
+  }
+
+  loadDatalist(){
+    this.setState({isLoading:true})
+    
+    AsyncStorage.getItem('siteID',(err, result) => {
+      let datasiteid = JSON.parse(result);
+      console.log('storage data is : ', datasiteid);
+      getExpenseList(datasiteid,this.state.startselectvalue, this.state.endselectvalue).then((data) =>{
+        let rowdata = [];
+       // this.setState({sitedetail: data.data})
+        this.setState({isLoading:false})
+        if(data.status.status != 0 ){
+          rowdata =
+          //[this.element(0),'24/04/2562','500','2.50','200','3.0','10000','2000','8000'],
+          data.data.map((v,i)=>{
+            const r = this.element(v.id);
+            console.log("type is id :", v.type)
+            return [r, v.datein,selectboxData.expense_type[v.type],v.price,]
+          })
+        }else{
+          rowdata = [];
+        }
+       
+       
+       console.log('row is ', rowdata);
+       this.setState({sitedetail: rowdata})
+      });
+    });
+  }
+
+  componentWillMount(){
+    this.reRenderSomething;
   }
 
   componentDidMount(){
@@ -39,7 +84,29 @@ export default class FormInput15 extends Component {
   }
 
   _alertIndex = (index) => {
-    Alert.alert(`This is row ${index + 1}`);
+    Alert.alert("ลบข้อมูล","ยืนยันการลบข้อมูล หรือ ไม่?",[
+      {text:"Cancel", onPress:()=>console.log("Cancel Delete"),style:'cancel'},
+      {text:"OK",onPress:()=>this.deletedata(index)}
+    ]);
+  }
+
+  deletedata = (id) => {
+    fetch(APIURL + '/expense/delete.php', {
+      method: 'POST',
+      headers: header,
+      body: JSON.stringify({
+        id: id
+      })
+
+      }).then((response) => response.json())
+          .then((responseJson) => {
+            Alert.alert("Delete " + id +" Success")
+            this.loadDatalist();
+          }).catch((error) => {
+            this.setState({isLoading: false})
+            console.error(error);
+          });
+    
   }
 
   _renderDatePicker(type){
@@ -71,24 +138,24 @@ export default class FormInput15 extends Component {
 
   element = (id) => (
       <View  style={{width:this.state.widthArr[0]}}>
-      <Icon name='close' color='#FF0000' onPress={() => state._alertIndex(id)} />
+      <Icon name='close' color='#FF0000' onPress={() => this._alertIndex(id)} />
       </View>
     
     
   );
 
-  render() {
+  _renderRowData(){
+    return(
+      <Rows
+        data={this.state.sitedetail}
+        widthArr={this.state.widthArr}
+        style={styles.row}
+        textStyle={styles.text}
+      /> 
+    )
+}
 
-    const state = this.state;
-    const tableData = [];
-    const colData = [
-                      [this.element(0),'24/04/2562','ค่าปุ๋ย','100'],
-                      [this.element(1),'25/04/2562','ค่าจ้างใส่ปุ๋ย','200'],
-                      [this.element(2),'26/04/2562','ค่ากำจัดวัชพืช','300'],
-                      [this.element(3),'27/04/2562','ค่าตัดแต่งทางใบ','300'],
-                    ];
-   
-    tableData.push(colData);
+  render() {
     
     return (
       <ScrollView ScrollContentStyle={styles.container} style={styles.container}>
@@ -113,21 +180,11 @@ export default class FormInput15 extends Component {
           <ScrollView ScrollContentStyle={styles.tablecontainner} horizontal={true} >
             <View>
             <Table borderStyle={{borderColor: '#C1C0B9'}}>
-                    <Row data={state.tableHead} widthArr={state.widthArr} style={styles.header} textStyle={styles.text}/>
+                    <Row data={this.state.tableHead} widthArr={this.state.widthArr} style={styles.header} textStyle={styles.text}/>
             </Table>
                 <ScrollView style={styles.dataWrapper}>
                   <Table borderStyle={{borderColor: '#C1C0B9'}}>
-                            { 
-                              tableData.map((rowData, index) => (
-                            <Rows
-                              key={index}
-                              data={rowData}
-                              widthArr={state.widthArr}
-                              style={[styles.row, index%2 && {backgroundColor: '#F7F6E7'}]}
-                              textStyle={styles.text}
-                              /> 
-                      ))
-                    }
+                  { this._renderRowData()  }
                   </Table>
                 </ScrollView>
             </View>

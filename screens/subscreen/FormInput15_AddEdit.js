@@ -1,52 +1,75 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, ScrollView, TouchableOpacity, TextInput,  Platform } from 'react-native'
+import { Text, StyleSheet, View, ScrollView, TouchableOpacity, TextInput,  AsyncStorage, Alert, ActivityIndicator } from 'react-native'
 import DatePicker from 'react-native-datepicker'
-import CustomInputText from '../../components/CustomInputText';
 import { Colors, Fonts } from '../../constants';
 import RNPickerSelect from 'react-native-picker-select';
 import { Ionicons } from '@expo/vector-icons';
+import { convertdate, APIURL, header } from '../../services/DataService';
 
-const list = [
-  {
-    name: 'รหัสแปลง',
-    id : 'code',
-    value: '001',
-    selectedvalue:'',
-    readonly: false,
-    type: 'text'
-  },{
-    name: 'วันที่',
-    id : 'datein',
-    value: '02/10/2561',
-    selectedvalue:'02/10/2561',
-    readonly: false,
-    type: 'datetime'
-  },{
-    name: 'ประเภท',
-    id : 'type',
-    value: '',
-    selectlist:[{id:'1', value:'ค่าปุ๋ย'},{id:'2', value:'ค่าจ้างใส่ปุ๋ย'},{id:'3', value:'ค่ากำจัดวัชพืช'},{id:'4', value:'ค่าตัดแต่งทางใบ'},{id:'5', value:'ค่าจ้างเก็บเกี่ยว'},{id:'6', value:'ค่าใช้จ่ายในการต้นไม้ที่ไม่ให้ผลผลิต'},{id:'7', value:'ค่าวิเคราะห์ดินและใบ'},{id:'8', value:'ค่าน้ำมัน'},{id:'9', value:'ค่ายาฆ่าแมลง'},{id:'10', value:'ค่าวัสดุอุปกรณ์'},{id:'11', value:'ค่าขนส่ง'}],
-    selectedvalue:'1',
-    readonly: false,
-    type: 'selectbox' //picker
-  },{
-    name: 'ค่าจ้าง',
-    id : 'code',
-    value: '',
-    selectedvalue:'',
-    readonly: false,
-    type: 'text'
-  }
-]
-
-const istypelist = [{id:'1', value:'ค่าปุ๋ย'},{id:'2', value:'ค่าจ้างใส่ปุ๋ย'},{id:'3', value:'ค่ากำจัดวัชพืช'},{id:'4', value:'ค่าตัดแต่งทางใบ'},{id:'5', value:'ค่าจ้างเก็บเกี่ยว'},{id:'6', value:'ค่าใช้จ่ายในการต้นไม้ที่ไม่ให้ผลผลิต'},{id:'7', value:'ค่าวิเคราะห์ดินและใบ'},{id:'8', value:'ค่าน้ำมัน'},{id:'9', value:'ค่ายาฆ่าแมลง'},{id:'10', value:'ค่าวัสดุอุปกรณ์'},{id:'11', value:'ค่าขนส่ง'}]
 
 export default class FormInput15_AddEdit extends Component {
 
   constructor(props){
     super(props);
-    this.state = { istype : "", startselectvalue: new Date(), }
+    this.state = { 
+      Input_type : "", 
+      Input_datein : "",
+      Input_price : 0,
+      isLoading : false
+     }
+
+     AsyncStorage.getItem('siteID',(err, result) => {
+      this.setState({palm : JSON.parse(result)})
+    })
   }
+
+  static navigationOptions = ({navigation}) => {
+    const { params = {} } = navigation.state;
+    return{
+      headerRight: <TouchableOpacity  onPress={() => params.handleUpdate()}><Text style={styles.buttonSave}>Save</Text></TouchableOpacity>
+    }
+  }
+
+  componentDidMount(){
+    this.props.navigation.setParams({ handleUpdate : this._InsertData})
+  }
+
+  _InsertData = () => {
+    this.setState({isLoading: true})
+    if(this.state.Input_datein != "" || this.state.Input_type != ""){
+      fetch(APIURL + '/expense/create.php', {
+        method: 'POST',
+        headers: header,
+        body: JSON.stringify({
+          palm: this.state.palm, 
+          type: this.state.Input_type, 
+          datein:convertdate(this.state.Input_datein),
+          price: this.state.Input_price
+        })
+  
+        }).then((response) => response.json())
+            .then((responseJson) => {
+              this.setState({isLoading: false})
+              Alert.alert(responseJson.status.message);
+              
+              // Showing response message coming from server after inserting records.
+              console.log("respos:", responseJson)
+              if(responseJson.status.status == 1){
+                this.props.navigation.goBack()
+              }
+              
+             // Alert.alert(responseJson);
+            }).catch((error) => {
+              this.setState({isLoading: false})
+              console.error(error);
+            });
+
+    }else{
+      Alert.alert("กรุณาระบุวันที่ และ ประเภทค่าใช้จ่าย");
+      this.setState({isLoading: false})
+    }
+  }
+
 
     render() {
       
@@ -57,7 +80,7 @@ export default class FormInput15_AddEdit extends Component {
                 <Text style={styles.textinputTitle}>วันที่</Text>
                 <DatePicker
                   style={{width: '90%', marginTop:10, marginBottom: 10}}
-                  date="20/06/2019"
+                  date={this.state.Input_datein}
                   mode="date"
                   placeholder="select date"
                   format="DD/MM/YYYY" 
@@ -74,13 +97,13 @@ export default class FormInput15_AddEdit extends Component {
                       marginLeft: 36
                     }
                   }}
-                  onDateChange={(date) => {this.setState({selectvalue: date})}}
+                  onDateChange={(date) => {this.setState({Input_datein: date})}}
               />
             </View>
             <View style={{marginBottom:20,borderBottomWidth:1, borderBottomColor:'#cccccc' }}></View>
             <View style={{paddingLeft:10, paddingRight:10}}>
               <Text style={{fontWeight:"bold"}}>ประเภท</Text>
-              <RNPickerSelect onValueChange={(value) => this.setState({istype:value})}
+              <RNPickerSelect onValueChange={(value) => this.setState({Input_type:value})}
               style={{
                 ...pickerSelectStyles,
                 iconContainer: {
@@ -92,17 +115,17 @@ export default class FormInput15_AddEdit extends Component {
                 return <Ionicons name="md-arrow-down" size={24} color="gray" />;
               }}
               items={[
-                {value:'1', label:'ค่าปุ๋ย'},
-                {value:'2', label:'ค่าจ้างใส่ปุ๋ย'},
-                {value:'3', label:'ค่ากำจัดวัชพืช'},
-                {value:'4', label:'ค่าตัดแต่งทางใบ'},
-                {value:'5', label:'ค่าจ้างเก็บเกี่ยว'},
-                {value:'6', label:'ค่าใช้จ่ายในการต้นไม้ที่ไม่ให้ผลผลิต'},
-                {value:'7', label:'ค่าวิเคราะห์ดินและใบ'},
-                {value:'8', label:'ค่าน้ำมัน'},
-                {value:'9', label:'ค่ายาฆ่าแมลง'},
-                {value:'10', label:'ค่าวัสดุอุปกรณ์'},
-                {value:'11', label:'ค่าขนส่ง'}
+                {value:'2', label:'ค่าปุ๋ย'},
+                {value:'3', label:'ค่าจ้างใส่ปุ๋ย'},
+                {value:'4', label:'ค่ากำจัดวัชพืช'},
+                {value:'5', label:'ค่าตัดแต่งทางใบ'},
+                {value:'6', label:'ค่าจ้างเก็บเกี่ยว'},
+                {value:'11', label:'ค่าใช้จ่ายในการต้นไม้ที่ไม่ให้ผลผลิต'},
+                {value:'10', label:'ค่าวิเคราะห์ดินและใบ'},
+                {value:'9', label:'ค่าน้ำมัน'},
+                {value:'8', label:'ค่ายาฆ่าแมลง'},
+                {value:'7', label:'ค่าวัสดุอุปกรณ์'},
+                {value:'12', label:'ค่าขนส่ง'}
               ]}
               value={this.state.istype}
                />
@@ -111,13 +134,13 @@ export default class FormInput15_AddEdit extends Component {
             <View style={{marginTop:20}}/>
             <View>
               <Text style={styles.textinputTitle}>ค่าจ้าง</Text>
-              <TextInput style={styles.textinput} editable={true} clearButtonMode='always' keyboardType='numeric' /> 
+              <TextInput style={styles.textinput} editable={true} clearButtonMode='always' keyboardType='numeric' onChangeText={TextInputValue => this.setState({Input_price : TextInputValue}) } /> 
             </View>
-            <View style={{marginTop:20}}>
+            {/* <View style={{marginTop:20}}>
             <TouchableOpacity onPress={()=>alert('Save Success')} style={styles.item}>
               <Text style={styles.itemText}>SAVE</Text>
             </TouchableOpacity>
-            </View>
+            </View> */}
             {/* <View>
               <CustomInputText list={list} getprops={this.props}  ></CustomInputText>
             </View> */}
@@ -156,6 +179,11 @@ const styles = StyleSheet.create({
       textAlignVertical:'center',
       marginLeft:10
     },
+    buttonSave:{
+      marginHorizontal:16,
+      fontSize: 17,
+      color:Colors.greencolor
+    },
   })
 
   const pickerSelectStyles = StyleSheet.create({
@@ -180,4 +208,5 @@ const styles = StyleSheet.create({
       color: Colors.primary,
       paddingRight: 30, // to ensure the text is never behind the icon
     },
+   
   });
